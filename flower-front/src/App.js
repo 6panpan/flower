@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { createHashHistory } from "history";
+import Main from "./view/Main";
+import KindPage from "./components/KindPage";
 
+const myHistory = createHashHistory();
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return ( 
+    //  路由的配置  
+    <div style={{width:"1200px",margin:"auto"}} className="App">
+      <Router history={myHistory}>
+        <Route exact={true} path="/" component={Main} />
+        {/* <Route exact={true} path="/xianhua" component={KindPage} /> */}
+        <Route exact={true} path="/:kindName" component={KindPage} />
+      </Router>
     </div>
   );
 }
