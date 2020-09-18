@@ -1,0 +1,302 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+}
+.nav-top {
+    padding-left: 32px;
+    display: flex;
+    height: 35px;
+    background-color: #F2F2F2;
+    border-bottom: 1px solid #e6e6e6;
+    box-sizing: border-box;
+    justify-content: space-between;
+}
+.nav-top a {
+    color: #737373;
+    font-size: 12px;
+}
+/* 顶部左边 */
+.top-left {
+    display: inline-block;
+}
+.top-left a {
+    line-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 8px;
+    font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+/* 小图标 */
+.icon1 {
+    width: 24px;
+    height: 24px;
+    background: transparent url(../../image/icons.png) no-repeat 0px -318px;
+}
+.icon2 {
+    width: 24px;
+    height: 24px;
+    background: transparent url(../../image/icons.png) no-repeat -374px -131px;
+}
+.icon3 {
+    width: 24px;
+    height: 24px;
+    background: transparent url(../../image/icons.png) no-repeat -294px -171px;
+}
+/* 微信和app的二维码 */
+.wechat,.app {
+    border: 1px solid transparent;
+    margin-top: -1px;
+    position: relative;
+    box-sizing: border-box;
+}
+.po-wechat{
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    text-align: center;
+    line-height: 18px;
+    padding: 20px 17px 15px;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    color: #737373;
+    z-index: 3;
+}
+.po-app {
+    position: absolute;
+    display: none;
+    background-color: #fff;
+    text-align: center;
+    line-height: 18px;
+    padding: 20px 10px 15px;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    color: #737373;
+    z-index: 3;
+}
+.po-app div {
+    width: 138px;
+}
+.po-wechat img,.po-app img {
+    width: 124px;
+    height: 124px;
+}
+/* 顶部右边 */
+.top-right {
+    display: inline-block;
+}
+.top-right .right-child {
+    line-height: 34px;
+    font-size: 12px;
+    color: #737373;
+    display: inline-flex;
+    align-items: center;
+    /* padding: 0 8px; */
+    box-sizing: border-box;
+    font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+.right-child a,.right-child span {
+    display: inline-flex;
+    height: 36px;
+    box-sizing: border-box;
+}
+.right-child a,.text{
+    padding: 0 8px 0 7px;
+}
+/* .active {
+    display: block;
+    background-color: blue;
+}
+.noactive {
+    display: none;
+    background-color: red;
+} */
+.loginer {
+    position: relative;
+}
+/* .person {
+    position: absolute;
+    top: 0;
+    left: 56px;
+} */
+.shopcar {
+    display: inline-flex;
+    align-items: center;
+}
+.right-child>span:not(.text) {
+    color: #D9D9D9;
+}
+/* .right-child a:nth-of-type(1) {
+    padding-right: 0;
+} */
+/* 小图标 */
+.icon4 {
+    width: 24px;
+    height: 24px;
+    margin-right: 2px;
+    background: transparent url(../../image/icons.png) no-repeat -340px -284px;
+}
+.nabal::after {
+    position: absolute;
+    top: 15px;
+    right: 2px;
+    content: " ";
+    border-top: 5px solid #D9D9D9;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.service:hover .nabal::after {
+    content: " ";
+    border-top: 5px solid #FF6A00;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+.myflow {
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    height: 36px;
+    margin-top: -1px;
+    margin-bottom: 1px;
+    border-bottom: 0;
+}
+/* 鼠标移入 */
+/* 颜色变化 */
+.nav-top a:hover {
+    color: #ff6a00;
+}
+.wechat, .app {
+    border: 1px solid transparent;
+    margin-top: -1px;
+    position: relative;
+    box-sizing: border-box;
+}
+.wechat:hover .po-wechat,.app:hover .po-app {
+    display: block;
+    top: 34px;
+    left: -1px;
+}
+
+.wechat:hover,.app:hover {
+    border: 1px solid #d9d9d9;
+    border-bottom: none;
+    background-color: #fff;
+}
+
+.myflow:hover {
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+}
+/* 客户服务 */
+.service {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    height: 36px;
+    width: 76px;
+    margin-top: -1px;
+    margin-bottom: 1px;
+    border-bottom: 0;
+}
+.service a {
+    margin: 0;
+}
+.hid-service {
+    position: absolute;
+    display: none;
+    box-sizing: border-box;
+    width: 76px;
+    height: 132px;
+    font-size: 12px;
+    margin: 0;
+    border: 1px solid #d9d9d9;
+    top: 34px;
+    left: -1px;
+    text-align: center;
+    background-color: #fff;
+}
+.hid-service a {
+    display: block;
+    line-height: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+}
+.service:hover span {
+    color: #ff6a00;
+}
+.service:hover {
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+}
+.hid-service:hover {
+    text-decoration: underline;
+    margin: 0;
+}
+.service:hover .hid-service {
+    display: block;
+}
+/* 购物车 */
+.data {
+    color: #ff6a00;
+}
+.shopcar {
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    height: 36px;
+    padding: 0 3px;
+    margin-top: -1px;
+    margin-bottom: 1px;
+    /* border-bottom: 0; */
+}
+.data {
+    padding: 0 12px 0 0px;
+}
+.data::after {
+    position: absolute;
+    top: 15px;
+    right: 7px;
+    content: " ";
+    border-top: 5px solid #D9D9D9;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+.shopcar:hover .data::after {
+    content: " ";
+    border-top: 5px solid #FF6A00;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+.hid-shopcar {
+    position: absolute;
+    top: 33px;
+    right: -1px;
+    display: none;  
+    height: 126px;
+    width: 320px;
+    text-align: center;
+    line-height: 126px;
+    box-sizing: border-box;
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+    z-index: 100;
+}
+.shopcar:hover {
+    border: 1px solid #d9d9d9;
+    background-color: #fff;
+}
+.shopcar:hover span {
+    color: #ff6a00;
+}
+.shopcar:hover .hid-shopcar {
+    display: block;
+    color: #737373;
+}
