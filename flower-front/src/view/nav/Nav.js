@@ -7,14 +7,15 @@ export default class Nav extends React.Component {
         super()
         this.state = {
             islogin: true,
+            username: 'liuxing'
         }
     }
     // 判断是否登录 cookie
     isLogin() {
 
     }
-    toPerson(){
-        this.props.history.push({pathname:"/Person"});
+    toPerson() {
+        this.props.history.push({ pathname: "/Person" });
     }
     render() {
         return (
@@ -49,12 +50,12 @@ export default class Nav extends React.Component {
                     <div className="top-right">
                         <div className="right-child">
                             <div className="loginer">
-                                <div style={{display:this.state.islogin?'none':"inline-block"}}>
+                                <div style={{ display: this.state.islogin ? 'none' : "inline-block" }}>
                                     <a href="#">你好，请登录</a>
-                                <a href="#">注册</a>
+                                    <a href="#">注册</a>
                                 </div>
-                                
-                                <a onClick={this.toPerson.bind(this)} style={{display:this.state.islogin?'inline-block':"none"}}>个人中心</a>
+
+                                <a onClick={this.toPerson.bind(this)} style={{ display: this.state.islogin ? 'inline-block' : "none" }}>你好，{this.state.username}</a>
                             </div>
 
                             <span>|</span>

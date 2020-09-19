@@ -1,5 +1,5 @@
 import React from 'react';
-import {FileDoneOutlined } from '@ant-design/icons';
+import { FileDoneOutlined, RedEnvelopeOutlined, UserOutlined } from '@ant-design/icons';
 
 
 export default class Right extends React.Component {
@@ -8,10 +8,15 @@ export default class Right extends React.Component {
         this.state = {
             username: 'liuxing',
             member: '普通会员',
-            overage: 0,
-            integral: 0,
-            coupon: 0,
+            paying: 0,//待支付
+            evaluate: 0,//待评价
+            overage: 0,//余额
+            integral: 0,//积分
+            coupon: 0,//优惠券
         }
+    }
+    upAvator() {
+
     }
     render() {
         return (
@@ -21,7 +26,9 @@ export default class Right extends React.Component {
                 </span>
                 <div className='own'>
                     <div className="own-left">
-                        <div className='avatar'></div>
+                        <div className='avatar' onClick={this.state.upAvator}>
+                            <UserOutlined className='avator-icon icon' />
+                        </div>
                         <div className='namer'>
                             <span>
                                 {this.state.username}
@@ -33,13 +40,16 @@ export default class Right extends React.Component {
                     </div>
                     <div className='own-mid'>
                         <div>
-                            <div className='wait-paying' ></div>
-
+                            <div className='wait-paying' >
+                                <RedEnvelopeOutlined style={{ color: '#FF6161' }} />
+                            </div>
+                            <span>待付款 {this.state.paying}</span>
                         </div>
                         <div>
                             <div className='wait-evaluate' >
-                            <FileDoneOutlined style={{color:'#FF6161'}}/>
+                                <FileDoneOutlined style={{ color: '#FF6161' }} />
                             </div>
+                            <span>待评价 {this.state.evaluate}</span>
                         </div>
                     </div>
                     <div className='own-right'>

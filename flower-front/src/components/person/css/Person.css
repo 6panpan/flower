@@ -37,7 +37,6 @@
 .own-left {
     width: 250px;
     height: 92px;
-    background-color: pink;
     display: flex;
     justify-content: space-between;
 }
@@ -45,7 +44,15 @@
     width: 92px;
     height: 92px;
     border-radius: 50% 50%;
-    background-color: #ccc;
+    background-color: #FFD4D4;
+    position: relative;
+}
+.avator-icon.icon {
+    position: absolute;
+    top: 21px;
+    left: 12px;
+    font-size: 44px;
+    color: #FF6161;
 }
 .namer {
     font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
@@ -73,6 +80,11 @@
     background-color: #FFD4D4;
     border-radius: 50%;
     position: relative;
+    border:1px solid transparent;
+
+}
+.wait-paying:hover,.wait-evaluate:hover {
+    border:1px solid #FF5757;
 }
 .anticon {
     font-size: 27px;
