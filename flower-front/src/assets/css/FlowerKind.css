@@ -1,0 +1,29 @@
+.kindBox {
+    /* height: 650px; */
+    /* background-color: bisque; */
+    margin-bottom: 20px;
+}
+
+.kindTitle {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+   
+}
+.kindTitle>p {
+    font-size: 20px;
+    color: #ff5757;
+    border-left: 3px #ff5757 solid;
+    padding-left: 8px;
+}
+
+#box {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.flowerBox {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

@@ -10,20 +10,23 @@ const contentStyle = {
 };
 
 class Lunbo extends React.Component {
+    zhuanti(){
+        console.log(333)
+    }
     render() {
         return (
-            <Carousel style={{ zIndex: "-100" }} autoplay dots>
-                <div>
-                    <img style={contentStyle} src="https://img02.hua.com/slider/20_zhongqiu_banner_pc.jpg" />
+            <Carousel onClick={this.zhuanti.bind(this)} style={{ zIndex: "-1" }} autoplay dots>
+                <div onClick={this.zhuanti.bind(this)}>
+                    <img alt="" style={contentStyle} src="https://img02.hua.com/slider/20_zhongqiu_banner_pc.jpg" />
                 </div>
                 <div>
-                    <img style={contentStyle} src="https://img02.hua.com/slider/20_youflower_pc.jpg" />
+                    <img alt="" style={contentStyle} src="https://img02.hua.com/slider/20_youflower_pc.jpg" />
                 </div>
                 <div>
-                    <img style={contentStyle} src="https://img02.hua.com/slider/20_day920_banner_pc.jpg" />
+                    <img alt="" style={contentStyle} src="https://img02.hua.com/slider/20_day920_banner_pc.jpg" />
                 </div>
                 <div>
-                    <img style={contentStyle} src="https://img02.hua.com/slider/20_birthday_pc.jpg" />
+                    <img alt="" style={contentStyle} src="https://img02.hua.com/slider/20_birthday_pc.jpg" />
                 </div>
             </Carousel>
         )

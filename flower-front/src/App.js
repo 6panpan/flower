@@ -13,7 +13,7 @@ function App() {
       <Router history={myHistory}>
         <Route exact={true} path="/" component={Main} />
         {/* <Route exact={true} path="/xianhua" component={KindPage} /> */}
-        <Route exact={true} path="/:kindName" component={KindPage} />
+        <Route exact={true} path="/flower/:kindName" component={KindPage} />
       </Router>
     </div>
   );
