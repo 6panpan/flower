@@ -17,32 +17,35 @@ class Main extends React.Component {
         })
         return r
     }
+    changePath(){
+        
+    }
     render() {
-        return (
-            <div id="sortBox">
+        return ( 
+            <div onClick={this.changePath.bind(this)} id="sortBox">
                 <div className="itemBox">
-                    <img src="https://cs.dinghuale.com/uploads/20200615/202006151134064029.png"/>
+                    <img alt="" src="https://cs.dinghuale.com/uploads/20200615/202006151134064029.png"/>
                     <p>用途</p>
                     <div>
                         {this.sortList(this.state.purpose)}
                     </div>
                 </div>
                 <div className="itemBox">
-                <img src="https://cs.dinghuale.com/uploads/20200615/202006151135191508.png"/>
+                <img alt="" src="https://cs.dinghuale.com/uploads/20200615/202006151135191508.png"/>
                     <p>花材</p>
                     <div >
                         {this.sortList(this.state.huacai)}
                     </div>
                 </div>
                 <div className="itemBox">
-                <img src="https://cs.dinghuale.com/uploads/20200615/202006151136103227.png"/>
+                <img alt="" src="https://cs.dinghuale.com/uploads/20200615/202006151136103227.png"/>
                     <p>类别</p>
                     <div >
                         {this.sortList(this.state.kinds)}
                     </div>
                 </div>
                 <div className="itemBox">
-                <img src="https://cs.dinghuale.com/uploads/20200615/202006151136201615.png"/>
+                <img alt="" src="https://cs.dinghuale.com/uploads/20200615/202006151136201615.png"/>
                     <p>枝数</p>
                     <div >
                         {this.sortList(this.state.num)}

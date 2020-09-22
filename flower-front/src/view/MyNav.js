@@ -16,14 +16,14 @@ class App extends React.Component {
         return list
     }
     kindPage(e) {
-        console.log(e.target.innerHTML)
+        // console.log(e.target.innerHTML)
         let path;
         switch (e.target.innerHTML) {
-            case "鲜花": path = "/xianhua"
+            case "鲜花": path = "/flower/xianhua"
                 break;
-            case "花束": path = "/huashu"
+            case "花束": path = "/flower/huashu"
                 break;
-            case "爱情鲜花": path = "/aiqingxianhua"
+            case "爱情鲜花": path = "/flower/aiqingxianhua"
                 break;
 
             default:
