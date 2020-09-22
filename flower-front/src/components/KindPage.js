@@ -13,6 +13,7 @@ class KingdPage extends React.Component {
         }
     }
     componentWillMount() {
+        console.log(this.props.location.query)
         axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
             params: {
                 purpose: this.props.location.query
@@ -31,7 +32,7 @@ class KingdPage extends React.Component {
             return <FlowerItem history={this.props.history} key={el.flower_id} flowerInf={el} />
         })
         return list
-    }
+    } 
     render() {
         return (
             <div>
