@@ -2,12 +2,11 @@
     width: 1200px;
     height: 100px;
     padding-top: 30px;
-    /* background-color: rgb(235, 235, 235); */
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
 }
-#mySearchBox>img { 
+#mySearchBox>img {  
     width: 100px; 
 }
 #mySearchBox #tel {
