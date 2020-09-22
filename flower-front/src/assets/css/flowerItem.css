@@ -1,0 +1,22 @@
+.flowerItem {
+    width: 220px;
+    margin: 0 0 20px 20px;
+    cursor: pointer;
+}
+
+.flowerItem>img{
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.inf {
+    height: 30px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.inf span:first-child{
+    font-size: 20px;
+    color: red;
+}

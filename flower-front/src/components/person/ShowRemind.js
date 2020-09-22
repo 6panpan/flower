@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios";
 import "../../assets/css/remind.css"
-import AddRemind from "./AddRemind"
+// import AddRemind from "./AddRemind"
 
 export default class ShowRemind extends Component {
   constructor() {
@@ -24,9 +24,6 @@ export default class ShowRemind extends Component {
       }
     }
     return null;
-  }
-  addRemind() {
-    return <AddRemind></AddRemind>
   }
   getRemind() {
     let re_id = this.getCookie("user_id")
@@ -80,14 +77,11 @@ export default class ShowRemind extends Component {
   render() {
     return (
       <>
-        <b>生日/纪恋日提醒</b>
-        <div className="addbtn">
-          <button type="button" onClick={this.addRemind.bind(this)}>新增生日/纪念日提醒+</button>
-        </div>
+        <br></br>
         <div className="showbox">
           <table className="mytb" style={{ position: "relative" }}>
             <tbody>
-              <tr style={{ backgroundColor: "#ccc"}}>
+              <tr>
                 <th>姓名</th>
                 <th>日期</th>
                 <th>距今天</th>

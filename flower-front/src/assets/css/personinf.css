@@ -1,12 +1,12 @@
 .changebox{
     width: 500px;
     height: 500px;
-    background-color: pink;
+    flex-direction: row;
 }
 .imgbox,.infbox{
     display: flex;
 }
-.img,.inf{
+.img,.myinf{
     margin:auto
 }
 .imgbox img{

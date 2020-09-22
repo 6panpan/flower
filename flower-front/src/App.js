@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createHashHistory } from "history";
 import Main from "./view/Main";
@@ -9,6 +9,7 @@ import Login from "./components/Login"
 import Personinf from './components/person/PersonInf';
 import ShowRemind from './components/person/ShowRemind';
 import AddRemind from './components/person/AddRemind';
+import Flower from "./view/Flower";
 
 const myHistory = createHashHistory();
 function App() {
@@ -18,9 +19,14 @@ function App() {
       <Router history={myHistory}>
         <Route exact={true} path="/"  component={Main}  />
         <Route exact={true} path="/xianhua" component={KindPage} />
+        <Route exact={true} path="/flower/:kindName" component={KindPage} />
+
+
         <Route exact={true} path='/Person' component={Person}/>
 
         {/* <Route exact={true} path="/:kindName" component={KindPage} /> */}
+
+        <Route exact={true} path="/flower/:flowerID" component={Flower} />
 
         <Route exact={true} path="/personinf" component={Personinf} />
         <Route exact={true} path="/showRemind" component={ShowRemind} />

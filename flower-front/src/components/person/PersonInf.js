@@ -124,8 +124,7 @@ export default class Personinf extends Component {
     render() {
         return (
             <>
-                <div>
-                    <p>个人信息</p>
+                <div style={{margin:"auto"}}>
                     <div className="changebox">
                         <div className="imgbox">
                             <div className="img">
@@ -139,7 +138,7 @@ export default class Personinf extends Component {
                             </div>
                         </div>
                         <div className="infbox">
-                            <div className="inf">
+                            <div className="myinf">
                                 <p>昵　　称<Input onChange={(e) => this.nicknamechange(e)} ref="nickname" placeholder={this.state.userinf.nickname} style={{ width: "220px", margin: "5px" }} /></p>
                                 <p>手机号码<Input onChange={(e) => this.phonechange(e)} placeholder={this.state.userinf.phoneNum} style={{ width: "220px", margin: "10px" }} /></p>
                                 <div className="sex">

@@ -1,0 +1,26 @@
+"use strict";
+
+let Service = require("egg").Service;
+
+class FlowerService extends Service {
+    // 根据类别查询花
+    async flowerByPurpose(purpose) {
+        let sql = "select * from flower where purpose=? limit 0,10";
+        // let sql = "select * from flower where purpose=?";
+        let list = await this.ctx.app.mysql.query(sql,[purpose]);
+        return list;
+    }
+    //查询花的信息
+    async getFlowers() {
+        let sql = "select * from flower limit 0,5";
+        let list = await this.ctx.app.mysql.query(sql,[]);
+        return list;
+    }
+    //根据id查询花的信息
+    async getFlowersByID(id) {
+        let sql = "select * from flower where flower_id =?";
+        let list = await this.ctx.app.mysql.query(sql,[id]);
+        return list;
+    }
+}
+module.exports = FlowerService;

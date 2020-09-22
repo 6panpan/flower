@@ -1,20 +1,25 @@
 .addbox{
     width: 500px;
     height: 400px;
-    background-color: sandybrown;
+    /* background-color: sandybrown; */
+    margin:20px 20px;
 }
 .showbox{
-    width: 800px;
+    width: 1200px;
     height: 550px;
     /* background-color: skyblue; */
     overflow-y:auto; 
     overflow-x:auto; 
+    margin-left: 30px;
+}
+.mytb{
+    background-color: rgb(238, 238, 238) !important;
 }
 .mytb th{
-    width: 130px;
+    width: 150px;
 }
 .t1 td{
-    width: 130px;
+    width: 150px;
     height: 60px;
 }
 .t1{
@@ -25,7 +30,9 @@
 }
 .mark{
     width: 300px !important;
-    overflow: hidden;
+    overflow: hidden;   
+    text-overflow:ellipsis;    
+    white-space: nowrap;
 }
 .s1{
     position:absolute;

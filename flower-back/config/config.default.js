@@ -10,9 +10,7 @@ exports.security = {
 exports.multipart = {
     mode: "file",
 };
-// exports.security = {
-//     csrf: false,
-// };
+
 
 exports.mysql = {
     client: {
@@ -29,3 +27,4 @@ exports.cors = {
     origin: "*",
     allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH",
 };
+

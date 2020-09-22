@@ -72,7 +72,7 @@ export default class AddRemind extends Component {
     render() {
         return (
             <>
-                <b>添加纪念日</b>
+                <b style={{fontSize:"20px"}}>添加纪念日</b>
                 <div className="addbox">
                     <p>*姓名：<Input onChange={(e) => this.namechange(e)} placeholder="请输入姓名" style={{ width: "240px", margin: "10px" }} /></p>
                     <div className="sex">

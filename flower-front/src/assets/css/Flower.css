@@ -1,0 +1,11 @@
+.flo-con {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.flo-bot {
+    display: flex;
+    width: 95%;
+    margin-left:30px;
+    margin-top:50px;
+}

@@ -15,4 +15,9 @@
 .itemBox>div>span {
     font-size: 14px;
     margin-right: 30px;
+    cursor: pointer;
 } 
+
+.itemBox>div>span:hover {
+    color:  #ff5757;
+}

@@ -1,6 +1,6 @@
-import React from 'react';
-import "../assets/css/MyNav.css"
-import Kinds from "../components/Kinds"
+import React from "react";
+import "../assets/css/MyNav.css";
+import Kinds from "../components/Kinds";
 
 class App extends React.Component {
     constructor() {
@@ -11,31 +11,23 @@ class App extends React.Component {
     }
     sortList() {
         let list = this.state.kinds.map(el => {
-            return <span key={el}>{el}</span>
-        })
-        return list
+            return <span key={el}>{el}</span>;
+        });
+        return list;
     }
     kindPage(e) {
-        console.log(e.target.innerHTML)
+        // console.log(e.target.innerHTML)
         let path;
-        switch (e.target.innerHTML) {
-            case "鲜花": path = "/xianhua"
-                break;
-            case "花束": path = "/huashu"
-                break;
-            case "爱情鲜花": path = "/aiqingxianhua"
-                break;
-
-            default:
-                break;
+        if (e.target.innerHTML) {
+            path = "/flower/" + e.target.innerHTML;
         }
         if (path) {
-            this.props.history.push({ pathname: path, query: e.target.innerHTML })
+            this.props.history.push({ pathname: path, query: e.target.innerHTML });
         }
     }
     kindsShow() {
         if (this.props.flas) {
-            return <Kinds />
+            return <Kinds />;
         }
     }
     render() {
@@ -49,9 +41,8 @@ class App extends React.Component {
                     <div id="sortEl">{this.sortList()}</div>
                 </div>
             </>
-        )
+        );
     }
 }
 
 export default App;
-
