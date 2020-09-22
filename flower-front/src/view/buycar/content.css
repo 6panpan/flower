@@ -1,0 +1,79 @@
+@media screen and(max-width:900px){
+    .det-header{
+        width: 920px;
+    }
+}
+button{
+    border: none;
+}
+
+/* 详情页内容头部 */
+.det-header{
+    width: 95%;
+    height: 440px;
+    margin: 0 auto;
+    /* border: 1px solid #ccc; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/* 左边图片 */
+.det-img{
+    /* width: 30%;
+    height: 90%; */
+    height: 400px;
+    width: 400px;
+    background-color: aquamarine;
+    border: 1px solid #ccc;
+}
+/* 右边信息 */
+.det-info{
+    width: 50%;
+    height: 90%;
+    text-align: left;
+    font-family: "宋体";
+    line-height: 15px;
+    /* border: 1px solid #ccc; */
+    color: #666666;
+    font-size: 15px;
+}
+/* 价格 */
+.price{
+    margin:  40px auto;
+    width: 90%;
+    padding: 20px 10px;
+    background-color: #F0F0F0;
+    font-weight: bold;
+    font-size: 17px;
+}
+.price>span{
+    color: red;
+    font-family: "黑体";
+}
+/* 购买操作的一整栏 */
+.info-oper{
+    font-size: 17px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 加入购物车和立即购买 */
+.info-buy{  
+    display: flex;
+    justify-content: space-between;
+
+}
+.info-add,.info-tobuy{
+    padding: 3px 10px;
+    text-align: center;
+    margin-left: 15px;
+}
+.info-add{
+    border: 1px solid #884E22;
+    color: #884E22;
+}
+.info-tobuy{
+    background-color:#884E22;
+    color: #fff;
+}

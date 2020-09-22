@@ -5,6 +5,7 @@ import { createHashHistory } from "history";
 import Main from "./view/Main";
 import KindPage from "./components/KindPage";
 import Person from './components/person/Person.js';
+import Flower from './view/Flower';
 
 const myHistory = createHashHistory();
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route exact={true} path="/" component={Main} />
         <Route exact={true} path="/flower/:kindName" component={KindPage} />
         <Route exact={true} path='/Person' component={Person}/>
+        <Route exact={true} path='/flower/:flowerID' component={Flower}/>
       </Router>
     </div>
   );

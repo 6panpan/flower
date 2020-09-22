@@ -10,5 +10,17 @@ class FlowerService extends Service {
         let list = await this.ctx.app.mysql.query(sql,[purpose]);
         return list;
     }
+    //查询花的信息
+    async getFlowers() {
+        let sql = "select * from flower limit 0,5";
+        let list = await this.ctx.app.mysql.query(sql,[]);
+        return list;
+    }
+    //根据id查询花的信息
+    async getFlowersByID(id) {
+        let sql = "select * from flower where flower_id =?";
+        let list = await this.ctx.app.mysql.query(sql,[id]);
+        return list;
+    }
 }
 module.exports = FlowerService;
