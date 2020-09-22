@@ -12,20 +12,20 @@ class FlowerKind extends React.Component {
         }
     }
     flowerShow() {
-        console.log(this.state.list)
+        // console.log(this.state.list)
         let list = this.state.list.map(el => {
             return <FlowerItem history={this.props.history} key={el.flower_id} flowerInf={el} />
         })
         return list
     }
     componentWillMount() {
-        console.log(this.props.kindInf.kind)
+        // console.log(this.props.kindInf.kind)
         axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
             params: {
                 purpose: this.props.kindInf.kind
             }
         }).then(res => {
-            console.log(11111111111111111)
+            // console.log(11111111111111111)
             this.setState({
                 list: res.data
             })

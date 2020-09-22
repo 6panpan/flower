@@ -8,7 +8,7 @@ import Person from "./components/person/Person.js";
 import Flower from "./view/Flower";
 
 const myHistory = createHashHistory();
-function App() {
+function App() { 
     return (
         //  路由的配置
         <div style={{ width: "1200px", margin: "auto" }} className="App">

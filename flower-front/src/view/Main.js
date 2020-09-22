@@ -11,7 +11,7 @@ class Main extends React.Component {
         return (
             <div>
                 <Nav history={this.props.history} />
-                <MySearch history={this.props.history} />
+                <MySearch flas={true} history={this.props.history} />
                 <MyNav style={{ zIndex: "10" }} flas={true} history={this.props.history} />
                 <Lunbo />
                 <img style={{ width: "1200px" }} alt="" src={other} />
