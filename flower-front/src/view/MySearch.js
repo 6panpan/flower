@@ -1,20 +1,10 @@
 import React from 'react';
 import "../assets/css/MySearch.css"
 import { Input } from 'antd';
-import { AudioOutlined,CustomerServiceOutlined,PhoneOutlined  } from '@ant-design/icons';
+import {CustomerServiceOutlined,PhoneOutlined} from '@ant-design/icons';
 import logo from "../assets/img/logo.png"
 
 const { Search } = Input;
-
-const suffix = (
-    <AudioOutlined 
-        style={{
-            fontSize: 16,
-            color: '#1890ff',
-        }}
-    />
-);
-
 
 class App extends React.Component {
     render() {

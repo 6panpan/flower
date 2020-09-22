@@ -13,10 +13,8 @@ function App() {
     <div style={{width:"1200px",margin:"auto"}} className="App">
       <Router history={myHistory}>
         <Route exact={true} path="/" component={Main} />
-        <Route exact={true} path="/xianhua" component={KindPage} />
+        <Route exact={true} path="/flower/:kindName" component={KindPage} />
         <Route exact={true} path='/Person' component={Person}/>
-
-        {/* <Route exact={true} path="/:kindName" component={KindPage} /> */}
       </Router>
     </div>
   );
