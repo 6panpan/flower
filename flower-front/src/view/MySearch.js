@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../assets/css/MySearch.css";
 import { Input } from "antd";
-import { CustomerServiceOutlined, PhoneOutlined } from "@ant-design/icons";
+// import {CustomerServiceOutlined,PhoneOutlined} from '@ant-design/icons';
 import logo from "../assets/img/logo.png";
 
 const { Search } = Input;

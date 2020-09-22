@@ -12,6 +12,9 @@
     width: 208px;
     border: 1px solid #ccc;
 }
+/* .rigth-content{
+    margin: 20px;
+} */
 .content {
     width: 968px;
     border: 1px solid #ccc;
@@ -30,7 +33,7 @@
     height: 138px;
     padding: 20px 30px;
     box-sizing: border-box;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     display: flex;
     justify-content: space-between;
 }
@@ -73,6 +76,7 @@
     border-bottom: 0px;
     display: flex;
     justify-content: space-around;
+    margin-right: 65px;
 }
 .wait-paying,.wait-evaluate {
     width: 50px;
@@ -102,4 +106,70 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+.own-right {
+    margin-right: 100px;
+}
+.own-right p {
+    margin-top: 16px;
+    margin-bottom: 1em;
+}
+.why-vip {
+    margin: 20px 30px;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+}
+.why-vip h6{
+    font-size: 14px;
+    font-weight: 900;
+    color: #777;
+}
+.why-vip hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+}
+.why-vip p {
+    font-size: 12px;
+    margin: 9px 0;
+}
+.collection {
+    margin: 20px 30px;
+    border: 1px solid #ccc;
+}
+.mycollection {
+    background-color: #EEEEEE;
+    padding: 0 20px;
+    display: block;
+}
+.collection p {
+    text-align: center;
+    color: red;
+    margin: 20px;
+}
+.my-integral {
+    padding: 10px 20px;
+    background-color: #eee;
+}
+.integral-text {
+    padding: 20px;
+    color: #666;
+    font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #ccc;
+}
+dd {
+    font-size: 12px;
+}
+dt {
+    font-weight: bold;
+}
+.jilu {
+    color: red;
+    /* margin: 0 auto; */
+    text-align: center;
+    font-weight: bold;
 }

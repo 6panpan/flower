@@ -22,8 +22,6 @@ class App extends React.Component {
             path = "/flower/" + e.target.innerHTML;
         }
         if (path) {
-            console.log(this.props);
-
             this.props.history.push({ pathname: path, query: e.target.innerHTML });
         }
     }
