@@ -9,7 +9,7 @@ class Main extends React.Component {
     render() {
         return (
             <div>
-                <Nav history={this.props.history}/>
+                <Nav flas={true} history={this.props.history}/>
                 <MySearch />
                 <MyNav flas={true} history={this.props.history} /> 
                 <Lunbo />

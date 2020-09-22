@@ -6,16 +6,51 @@ export default class Nav extends React.Component {
     constructor() {
         super()
         this.state = {
-            islogin: true,
-            username: 'liuxing'
+            islogin: false,
         }
+    }
+    componentWillMount(){
+        this.isLogin() 
+    }
+    
+    toPerson() {
+        this.props.history.push({ pathname: "/Person" });
+    }
+    getCookie(key) {
+        let name = key + "="; //"pwd="
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            // "pwd=abc"   "price=12.4"  "name=小王"
+            let c = ca[i].trim();
+            if (c.indexOf(name) == 0) {
+                //"pwd=abc"	   //4       ,  7
+                return c.substring(name.length, c.length);
+            }
+        }
+        return null;
     }
     // 判断是否登录 cookie
     isLogin() {
-
+        let nickname = this.getCookie("nickname")
+        // console.log(nickname);
+        this.setState ({
+            nickname:nickname
+        })
+        if (nickname) {
+            this.state.islogin = true
+        }
     }
-    toPerson() {
-        this.props.history.push({ pathname: "/Person" });
+    loginout(){
+        //cookie
+        document.cookie = "user_id=" + "";
+        document.cookie = "phoneNum=" + "";
+        document.cookie = "pwd=" + "";
+        document.cookie = "nickname=" + "";
+        //跳到主页面
+        alert("退出登录成功")
+        // this.props.history.push({ pathname: "/" });
+        this.props.history.go(0) 
+        // this.props.history.push("/")
     }
     render() {
         return (
@@ -51,11 +86,11 @@ export default class Nav extends React.Component {
                         <div className="right-child">
                             <div className="loginer">
                                 <div style={{ display: this.state.islogin ? 'none' : "inline-block" }}>
-                                    <a href="#">你好，请登录</a>
+                                    <a href="/login">你好，请登录</a>
                                     <a href="#">注册</a>
                                 </div>
 
-                                <a onClick={this.toPerson.bind(this)} style={{ display: this.state.islogin ? 'inline-block' : "none" }}>你好，{this.state.username}</a>
+                                <a onClick={this.toPerson.bind(this)} style={{ display: this.state.islogin ? 'inline-block' : "none" }}>你好，{this.state.nickname}   </a><span style={{ display: this.state.islogin ? 'inline-block' : "none" }} className="loginout" onClick={this.loginout.bind(this)}>退出</span>
                             </div>
 
                             <span>|</span>

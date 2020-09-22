@@ -1,0 +1,36 @@
+.changebox{
+    width: 500px;
+    height: 500px;
+    background-color: pink;
+}
+.imgbox,.infbox{
+    display: flex;
+}
+.img,.inf{
+    margin:auto
+}
+.imgbox img{
+    width: 100px;
+    height: 100px;
+    background-color: powderblue;
+    border-radius: 50%;
+
+}
+.myinp{
+    display: none;
+}
+.imgbox span{
+    display: inline-block;
+    margin-left:24px ;
+    margin-top: 10px;
+}
+.imgbox span:hover{
+    color: sandybrown;
+    cursor: pointer;
+}
+.infbox{
+    margin-top: 20px;
+}
+.sex{
+    margin-bottom: 10px;
+}

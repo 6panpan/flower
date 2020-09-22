@@ -1,11 +1,18 @@
 // cookie配置
 exports.keys = "dfbgffdsafddgxsdfrxdfd";
+//加上后post请求才能成功,文件上传才能成功 1
+exports.security = {
+    csrf: {
+      enable: false,
+      ignoreJSON: true
+    }
+  };
 exports.multipart = {
     mode: "file",
 };
-exports.security = {
-    csrf: false,
-};
+// exports.security = {
+//     csrf: false,
+// };
 
 exports.mysql = {
     client: {
