@@ -1,29 +1,46 @@
-import React from 'react';
-import "../assets/css/MySearch.css"
-import { Input } from 'antd';
-import {CustomerServiceOutlined,PhoneOutlined} from '@ant-design/icons';
-import logo from "../assets/img/logo.png"
+import React, { useEffect } from "react";
+import "../assets/css/MySearch.css";
+import { Input } from "antd";
+import { CustomerServiceOutlined, PhoneOutlined } from "@ant-design/icons";
+import logo from "../assets/img/logo.png";
 
 const { Search } = Input;
-
 class App extends React.Component {
+    kindPage(e) {
+        console.log(e);
+        let path;
+        if (e) {
+            path = "/flower/" + e;
+        }
+        console.log(path);
+
+        if (path) {
+            console.log(this.props.history);
+
+            this.props.history.push({ pathname: path, query: e });
+        }
+    }
     render() {
         return (
             <div id="mySearchBox">
-                <img src={logo} alt="" />
+                <img src={logo} alt="" style={{ width: "70px", height: "70px" }} />
                 <Search
                     placeholder="商品搜索"
                     enterButton="搜索"
                     size="large"
-                    style={{width:"400px"}}
-                    onSearch={value => console.log(value)}
+                    style={{ width: "400px" }}
+                    onSearch={this.kindPage.bind(this)}
                 />
                 <div>
-                    <span id="tel"><PhoneOutlined /> 400-123-456</span>
-                    <span><CustomerServiceOutlined /> 在线客服</span>
+                    <span id="tel">
+                        <PhoneOutlined /> 400-123-456
+                    </span>
+                    <span>
+                        <CustomerServiceOutlined /> 在线客服
+                    </span>
                 </div>
             </div>
-        )
+        );
     }
 }
 
