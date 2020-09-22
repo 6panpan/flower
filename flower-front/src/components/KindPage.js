@@ -13,7 +13,23 @@ class KingdPage extends React.Component {
         }
     }
     componentWillMount() {
-        console.log(this.props.location.query)
+        // console.log(this.props.location.query)
+        this.getAxios()
+        // axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
+        //     params: {
+        //         purpose: this.props.location.query
+        //     }
+        // }).then(res => {
+        //     this.setState({
+        //         list: res.data
+        //     })
+        //     return
+        // }).catch(err => {
+        //     console.log("err")
+        // })
+    }
+    getAxios(){
+        console.log("------------------")
         axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
             params: {
                 purpose: this.props.location.query
@@ -28,6 +44,7 @@ class KingdPage extends React.Component {
         })
     }
     showFlower() {
+        console.log(this.state.list)
         let list = this.state.list.map(el => {
             return <FlowerItem history={this.props.history} key={el.flower_id} flowerInf={el} />
         })
@@ -36,8 +53,9 @@ class KingdPage extends React.Component {
     render() {
         return (
             <div>
-                <MySearch />
-                <MyNav history={this.props.history} />
+                <MySearch father={this} history={this.props.history}/>
+                <MyNav father={this} history={this.props.history} />
+
                 <p>首页&gt;{this.props.location.query}</p>
                 <SortAll />
 

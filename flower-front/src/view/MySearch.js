@@ -6,16 +6,19 @@ import logo from "../assets/img/logo.png";
 const { Search } = Input;
 class App extends React.Component {
     kindPage(e) {
-        console.log(e);
+        // console.log(e);
         let path;
         if (e) {
             path = "/flower/" + e;
         }
-        console.log(path);
+        // console.log(path);
+
+        if(this.props.father){
+            this.props.father.getAxios(e)
+        }
 
         if (path) {
             console.log(this.props.history);
-
             this.props.history.push({ pathname: path, query: e });
         }
     }
@@ -32,10 +35,11 @@ class App extends React.Component {
                 />
                 <div>
                     <span id="tel">
-                         400-123-456
+
+                        400-123-456
                     </span>
                     <span>
-                         在线客服
+                        在线客服
                     </span>
                 </div>
             </div>
