@@ -300,3 +300,7 @@ a {
     display: block;
     color: #737373;
 }
+.loginout:hover{
+    color:#ff6a00 ;
+    cursor: pointer;
+}

@@ -3,7 +3,7 @@ import React from 'react';
 import { Breadcrumb } from 'antd';
 import { Menu } from 'antd';
 
-import './css/Person.css';
+import '../../assets/css/Person.css';
 import Nav from '../../view/nav/Nav.js';
 // import Lefthead from './LeftHead';
 import Rigthcontent from './RigthContent';

@@ -18,7 +18,7 @@ class FlowerService extends Service {
             "%" + flower_name + "%",
             "%" + purpose + "%",
             "%" + kind + "%",
-            num,
+            "%" + num + "%",
         ]);
         return list;
     }

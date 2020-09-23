@@ -16,13 +16,8 @@ class GoodsController extends Controller {
         let purpose = this.ctx.request.query.purpose;
         let kind = this.ctx.request.query.kind;
         let num = this.ctx.request.query.num;
-        console.log(flower_name, purpose, kind, num);
-        let list = await this.ctx.service.flowerService.flowerByPurpose(
-            flower_name,
-            purpose,
-            kind,
-            num
-        );
+        console.log("这里是" + flower_name, purpose, kind, num);
+        let list = await this.ctx.service.flowerService.allFlower(flower_name, purpose, kind, num);
         this.ctx.response.body = list;
     }
     //查询花的信息

@@ -6,7 +6,6 @@ export default class Member extends React.Component {
     constructor() {
         super()
         this.state = {
-            username: 'liuxing',
             member: '普通会员',
             paying: 0,//待支付
             evaluate: 0,//待评价
@@ -14,8 +13,26 @@ export default class Member extends React.Component {
             integral: 0,//积分f v
         }
     }
-    upAvator() {
-
+    getCookie(key) {
+        let name = key + "=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i].trim();
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return null;
+    }
+    componentDidMount() {
+        this.getname()
+    }
+    getname(){
+        let nickname=this.getCookie("nickname")
+        console.log(nickname);
+        this.setState=({
+            nickname:nickname
+        })
     }
     render() {
         return (
@@ -30,7 +47,7 @@ export default class Member extends React.Component {
                         </div>
                         <div className='namer'>
                             <span>
-                                {this.state.username}
+                                {this.state.nickname}
                             </span>
                             <span>
                                 {this.state.member}

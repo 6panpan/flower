@@ -30,16 +30,19 @@ class KingdPage extends React.Component {
     }
     getAxios() {
         axios
-            .get("http://127.0.0.1:7001/allFlower", {
+            .get("http://127.0.0.1:7001/allFlower.do", {
                 params: {
+                    flower_name: this.props.location.query,
                     purpose: this.props.location.query,
+                    kind: this.props.location.query,
+                    num: this.props.location.query,
                 },
             })
             .then(res => {
                 this.setState({
                     list: res.data,
                 });
-                console.log("------------------");
+                console.log("/allFlower");
                 return;
             })
             .catch(err => {
@@ -60,7 +63,7 @@ class KingdPage extends React.Component {
                 <MyNav father={this} history={this.props.history} />
 
                 <p>首页&gt;{this.props.location.query}</p>
-                <SortAll />
+                <SortAll father={this} history={this.props.history} />
 
                 <div style={{ display: "flex", justifyContent: "left", flexWrap: "wrap" }}>
                     {this.showFlower()}
