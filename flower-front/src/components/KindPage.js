@@ -30,17 +30,6 @@ class KingdPage extends React.Component {
         }).catch(err => {
             console.log("err")
         })
-        // axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
-        //     params: {
-        //         purpose: this.props.location.query
-        //     }
-        // }).then(res => {
-        //     this.setState({
-        //         list: res.data
-        //     )}
-        // }).catch(err=>{
-        //     console.log("err")
-        // })
     }
 
     getAxios() {

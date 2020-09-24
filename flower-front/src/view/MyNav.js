@@ -13,7 +13,7 @@ class App extends React.Component {
         let list = this.state.kinds.map(el => {
             return <span key={el}>{el}</span>;
         });
-        return list;
+        return list; 
     }
     kindPage(e) {
         // console.log(e.target.innerHTML)
