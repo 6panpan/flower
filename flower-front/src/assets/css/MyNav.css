@@ -1,10 +1,11 @@
+/* 务必保留这版 */
 #navBox {
     cursor: pointer;
     display: flex;
     height: 40px;
-    line-height: 40px;
 }
 #navBox #allSort {
+    line-height: 40px;
     font-weight: bold;
     font-size: 18px;
     width: 206px;
@@ -14,6 +15,7 @@
     background-color: #ff5757;
 }
 #sortEl {
+    line-height: 40px;
     width: 750px;
     display: flex;
     font-weight: bold;
@@ -25,13 +27,16 @@
 }
 
 #navBox p {
-    margin-bottom: 0px;
+    line-height: 40px;
+    display: block;
+    margin-bottom: -0px;
     color: #ff5757;
 }
 #sortBox {
     background-color: rgba(255, 255, 255, 0.94);
 }
 .sortItem {
+    line-height: 4px;
     display: flex;
     width: 250px;
     font-size: 14px;
@@ -39,7 +44,9 @@
     color: rgb(125 125 125);
 }
 .sortItem > span {
-    margin: -9px 20px -10px 0;
+    /* background-color: #ff5757; */
+    line-height: 20px;
+    margin: 0px 10px;
 }
 
 .sortItem > span:hover {

@@ -1,6 +1,8 @@
 import React from "react";
 import "./Nav.css";
 import erweima from "../../image/erweima.png";
+import axios from "axios";
+
 
 export default class Nav extends React.Component {
     constructor() {
@@ -9,10 +11,10 @@ export default class Nav extends React.Component {
             islogin: false,
         }
     }
-    componentWillMount(){
-        this.isLogin() 
+    componentWillMount() {
+        this.isLogin()
     }
-    
+
     toPerson() {
         this.props.history.push({ pathname: "/Person" });
     }
@@ -32,25 +34,25 @@ export default class Nav extends React.Component {
     // 判断是否登录 cookie
     isLogin() {
         let nickname = this.getCookie("nickname")
-        // console.log(nickname);
-        this.setState ({
-            nickname:nickname
+        console.log(nickname);
+        this.setState({
+            nickname: nickname
         })
         if (nickname) {
             this.state.islogin = true
         }
     }
-    loginout(){
+    loginout() {
         //cookie
         document.cookie = "user_id=" + "";
         document.cookie = "phoneNum=" + "";
-        document.cookie = "pwd=" + "";
         document.cookie = "nickname=" + "";
-        //跳到主页面
-        alert("退出登录成功")
+        
+        
         // this.props.history.push({ pathname: "/" });
-        this.props.history.go(0) 
-        // this.props.history.push("/")
+        alert("退出登录成功")
+        window.location.reload(true)
+        
     }
     render() {
         return (
