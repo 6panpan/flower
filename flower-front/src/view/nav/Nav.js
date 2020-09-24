@@ -1,10 +1,10 @@
 import React from "react";
 import "./Nav.css";
 import erweima from "../../image/erweima.png";
-import axios from "axios";
+import {withRouter} from "react-router-dom"
 
 
-export default class Nav extends React.Component {
+class Nav extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -16,7 +16,12 @@ export default class Nav extends React.Component {
     }
 
     toPerson() {
-        this.props.history.push({ pathname: "/Person" });
+        //解决第二次点击报错
+        if (this.props.location.pathname==="/Person") {
+            window.location.reload(true)
+        }else{
+            this.props.history.push({ pathname: "/Person" });
+        }  
     }
     getCookie(key) {
         let name = key + "="; //"pwd="
@@ -49,10 +54,17 @@ export default class Nav extends React.Component {
         document.cookie = "nickname=" + "";
         
         
-        // this.props.history.push({ pathname: "/" });
+        this.props.history.push({ pathname: "/" });
         alert("退出登录成功")
         window.location.reload(true)
         
+    }
+    toBuycar() {
+        if(this.getCookie("nickname")) {
+            this.props.history.push({ pathname: "/buycar" });
+        } else {
+            this.props.history.push({ pathname: "/login" });
+        }
     }
     render() {
         return (
@@ -90,7 +102,6 @@ export default class Nav extends React.Component {
                             <div className="loginer">
                                 <div style={{ display: this.state.islogin ? 'none' : "inline-block" }}>
                                     <a href="/login">你好，请登录</a>
-                                    <a href="#">注册</a>
                                 </div>
 
                                 <a onClick={this.toPerson.bind(this)} style={{ display: this.state.islogin ? 'inline-block' : "none" }}>你好，{this.state.nickname}   </a><span style={{ display: this.state.islogin ? 'inline-block' : "none" }} className="loginout" onClick={this.loginout.bind(this)}>退出</span>
@@ -117,13 +128,13 @@ export default class Nav extends React.Component {
                                 </div>
                             </div>
                             <span>|</span>
-                            <a className="shopcar" href="#">
+                            <a onClick={this.toBuycar.bind(this)}  className="shopcar" href="#">
                                 <div className="icon4"></div>
                                 购物车
-                                <span className="data">(0)</span>
+                                {/* <span className="data">(0)</span>
                                 <div className="hid-shopcar">
                                     您的购物车中没有商品，先去选购吧！
-                                </div>
+                                </div> */}
                             </a>
                             <span>|</span>
                             <span className="text">花了么:中国鲜花领先品牌</span>
@@ -134,3 +145,5 @@ export default class Nav extends React.Component {
         );
     }
 }
+
+export default withRouter(Nav)

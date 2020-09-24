@@ -36,37 +36,38 @@ export default class Personinf extends Component {
     nicknamechange(e) {
         this.setState({
             nickname: e.target.value
-        })
-        
+        }) 
     }
     sexchange(e) {
         this.setState({
             sex: e.target.value
         })
     }
+    //一个bug
+    //只能最后修改头像
     imgchange(e) {
-        console.log(e.target.files[0]);
-        this.state.userinf.headimg = e.target.files[0]
+        this.setState({
+            headimg: e.target.files[0]
+        })
+        // this.state.userinf.headimg = e.target.files[0]
     }
     getUserinf() {
         let user_id = this.getCookie("user_id")
-        console.log(user_id);
         axios.get("http://127.0.0.1:7001/getUserinf", {
             params: {
                 user_id: user_id
             }
         }).then(res => {
             this.setState({
-                userinf :res.data[0],
-                // sex:res.data[0].sex
+                userinf :res.data[0]
             })
-            console.log(this.state.userinf.sex);
         })
     }
     getsex(){
         return this.getCookie("sex")
     }
     infchange() {
+        //未输入的时候判断赋值  否则会传入空值
         if (this.state.phoneNum === undefined) {
             this.state.phoneNum = this.state.userinf.phoneNum
         }
@@ -125,7 +126,9 @@ export default class Personinf extends Component {
                         <div className="imgbox">
                             <div className="img">
                                 <label>
-                                    <img src={this.state.userinf.headimg}></img>
+                                    <img  src={this.state.userinf.headimg}></img>
+                                    {/* <img  src={this.state.headimg}></img> */}
+
                                     <br></br>
                                     <span>修改头像</span>
                                     {/* <input className="myinp" onChange={(e) => this.imgchange(e)} type="file"></input> */}
