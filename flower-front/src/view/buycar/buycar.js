@@ -21,101 +21,100 @@ export default class Buycar extends React.Component {
     console.log(list)
     // let
     let tbody = document.getElementById('mybuycar')
-    for (let i = 0; i < list.length; i++) {
-      
-      let tr = document.createElement('tr')
-      // 勾选框
-      let check = document.createElement('input')
-      check.type = 'checkbox'
-      check.classList.add('check-single')
+    if (list.length == 0) {
+      document.getElementsByClassName('buy-car')[0].innerHTML = '<h1>购物车里没有东西哦，快去加购吧！</h1>'
+    } else {
+      for (let i = 0; i < list.length; i++) {
+        let tr = document.createElement('tr')
+        // 勾选框
+        let check = document.createElement('input')
+        check.type = 'checkbox'
+        check.classList.add('check-single')
 
-      let check_td = document.createElement('td')
-      check_td.appendChild(check)
-      tr.appendChild(check_td)
+        let check_td = document.createElement('td')
+        check_td.appendChild(check)
+        tr.appendChild(check_td)
 
-      // tbody.appendChild(tr)
-      tr.innerHTML += `<td>${list[i].name}</td>
+        // tbody.appendChild(tr)
+        tr.innerHTML += `<td>${list[i].name}</td>
                   <td>${list[i].price}</td>
                   <td><button class='sub-num'>-</button><span class='buycarNum'>${list[i].num}</span><button class='add-num'>+</button></td>`
-      //每一行删除按钮
-      let delBtn = document.createElement('button')
-      delBtn.innerHTML = '删除'
-      delBtn.classList.add("del");
+        //每一行删除按钮
+        let delBtn = document.createElement('button')
+        delBtn.innerHTML = '删除'
+        delBtn.classList.add('del')
 
+        let td = document.createElement('td')
+        td.appendChild(delBtn)
+        tr.appendChild(td)
+        tbody.appendChild(tr)
 
-      let td = document.createElement('td')
-      td.appendChild(delBtn)
-      tr.appendChild(td)
-      tbody.appendChild(tr)
-
-      let checkall = document.getElementsByClassName('check-all')[0]
-      let single = document.getElementsByClassName('check-single')
-      // 点击全选按钮式，选中全部
-      checkall.addEventListener('click', function (e) {
-        for (let i = 0; i < single.length; i++) {
-          single[i].checked = checkall.checked
+        let checkall = document.getElementsByClassName('check-all')[0]
+        let single = document.getElementsByClassName('check-single')
+        // 点击全选按钮式，选中全部
+        checkall.addEventListener('click', function (e) {
+          for (let i = 0; i < single.length; i++) {
+            single[i].checked = checkall.checked
+          }
+          that.total()
+        })
+      }
+      tbody.addEventListener('click', function (e) {
+        
+        let checkall = document.getElementsByClassName('check-all')[0]
+        // console.log(tbody)
+        // console.log(e.target)
+        // console.log(this.findIndex)
+        // 获取当前点击项所在的tr在整个tbody的位置
+        let index = that.findIndex(this, e.target)
+        // 减少数量
+       if (e.target.className.match('sub-num')) {
+          // console.log(subtotal.innerHTML)
+          list[index].num -= 1
+          e.target.nextElementSibling.innerHTML = list[index].num
+          if (list[index].num === 1) {
+            e.target.disabled = true
+          }
+          // 计算每个产品的小计
+          // subtotal.innerHTML = (list[index].num * list[index].price).toFixed(2)
+          list[index].total = (list[index].num * list[index].price).toFixed(2)
+        } else if (e.target.className.match('add-num')) {
+          // console.log("add")
+          let newNum = parseInt(list[index].num);
+          list[index].num=newNum+1
+          e.target.previousElementSibling.innerHTML = list[index].num
+          if (list[index].num > 1) {
+            e.target.parentNode.firstElementChild.disabled = false
+            // console.log(e.target.parentNode.firstElementChild.disabled)
+          }
+          // 计算每个产品的小计
+          // subtotal.innerHTML = (list[index].numb * list[index].price).toFixed(2)
+          list[index].total = (list[index].numb * list[index].price).toFixed(2)
+        } else if (e.target.className.match('del')) {
+          // 找到tr标签
+          e.target.parentNode.parentNode.remove()
+          //更新数组中的数据
+          list.splice(index, 1)
+        } else if (e.target.className.match('check')) {
+          let tr = e.target.parentNode.parentNode.parentNode.children
+          let flag = true
+          for (let i = 0; i < tr.length; i++) {
+            // 获取所有的checkbox元素
+            let checkbox = tr[i].firstElementChild.firstElementChild
+            if (!checkbox.checked) {
+              flag = false
+              break
+            }
+          }
+          // 如果所有的子项都选中,那么将全选按钮选中
+          checkall.checked = flag
         }
+        // 计算总价
         that.total()
       })
+    }
 
-     }
-     tbody.addEventListener('click', function (e) {
-      let checkall = document.getElementsByClassName('check-all')[0]
-      // console.log(tbody)
-      // console.log(e.target)
-      // console.log(this.findIndex)
-      // 获取当前点击项所在的tr在整个tbody的位置
-      let index = that.findIndex(this, e.target)
-      // 减少数量
-      // let subtotal = e.target.parentNode.nextElementSibling
-      // console.log(e.target.parentNode.parentNode)
-      if (e.target.className.match('sub-num')) {
-        // console.log(subtotal.innerHTML)
-        list[index].num-=1
-        e.target.nextElementSibling.innerHTML = list[index].num
-        if (list[index].num === 1) {
-          e.target.disabled = true
-        }
-        // 计算每个产品的小计
-        // subtotal.innerHTML = (list[index].num * list[index].price).toFixed(2)
-        list[index].total = (list[index].num * list[index].price).toFixed(2)
-
-      } else if (e.target.className.match('add-num')) {
-
-        let newNum = parseInt(list[index].num);
-        list[index].num=newNum+1
-        e.target.previousElementSibling.innerHTML = list[index].num
-
-        if (list[index].num > 1) {
-          e.target.parentNode.firstElementChild.disabled = false
-          // console.log(e.target.parentNode.firstElementChild.disabled)
-        }
-        // 计算每个产品的小计
-        // subtotal.innerHTML = (list[index].numb * list[index].price).toFixed(2)
-        list[index].total = (list[index].numb * list[index].price).toFixed(2)
-      } else if (e.target.className.match('del')) {
-        // 找到tr标签
-        e.target.parentNode.parentNode.remove()
-        //更新数组中的数据
-        list.splice(index, 1)
-      } else if (e.target.className.match('check')) {
-        let tr = e.target.parentNode.parentNode.parentNode.children
-        let flag = true
-        for (let i = 0; i < tr.length; i++) {
-          // 获取所有的checkbox元素
-          let checkbox = tr[i].firstElementChild.firstElementChild
-          if (!checkbox.checked) {
-            flag = false
-            break
-          }
-        }
-        // 如果所有的子项都选中,那么将全选按钮选中
-        checkall.checked = flag
-      }
-      // 计算总价
-    that.total()
-    })
-    this.total()
+    // this.total()
   }
   //parent表示tbody, current表示点击的按钮或者checkbox
   //要找到按钮或checkbox所在的tr在tbody的下标
