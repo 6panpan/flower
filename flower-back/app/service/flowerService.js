@@ -5,9 +5,9 @@ let Service = require("egg").Service;
 class FlowerService extends Service {
     // 根据类别查询花
     async flowerByPurpose(purpose) {
-        let sql = "select * from flower where purpose=? limit 0,10";
+        let sql = "select * from flower where purpose like ? limit 0,8";
         // let sql = "select * from flower where purpose=?";
-        let list = await this.ctx.app.mysql.query(sql, [purpose]);
+        let list = await this.ctx.app.mysql.query(sql, ["%" + purpose + "%"]);
         return list;
     }
     // 根据任意字符查询全部花

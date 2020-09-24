@@ -12,9 +12,9 @@
 .imgbox img{
     width: 100px;
     height: 100px;
-    background-color: powderblue;
+    /* background-color: powderblue; */
     border-radius: 50%;
-
+    overflow:hidden
 }
 .myinp{
     display: none;

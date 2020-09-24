@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios";
 import "../../assets/css/remind.css"
-// import AddRemind from "./AddRemind"
+import reminder from "../../image/reminder.jpg"
 
 export default class ShowRemind extends Component {
   constructor() {
@@ -102,6 +102,7 @@ export default class ShowRemind extends Component {
               </tr>
             </tbody>
           </table>
+          <img src={reminder}></img>
           {this.showList()}
         </div>
       </>
