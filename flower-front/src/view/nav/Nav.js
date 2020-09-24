@@ -54,6 +54,18 @@ export default class Nav extends React.Component {
         window.location.reload(true)
         
     }
+    toBuycar() {
+        // console.log(this.getCookie("nickname"));
+        this.props.history.push({ pathname: "/buycar" });
+    }
+    getCookie(name){
+        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");     
+        if(arr=document.cookie.match(reg)){
+          return (arr[2]);
+        }else{
+          return null;
+        }
+    }
     render() {
         return (
             <>
@@ -117,13 +129,13 @@ export default class Nav extends React.Component {
                                 </div>
                             </div>
                             <span>|</span>
-                            <a className="shopcar" href="#">
+                            <a onClick={this.toBuycar.bind(this)}  className="shopcar" href="#">
                                 <div className="icon4"></div>
                                 购物车
-                                <span className="data">(0)</span>
+                                {/* <span className="data">(0)</span>
                                 <div className="hid-shopcar">
                                     您的购物车中没有商品，先去选购吧！
-                                </div>
+                                </div> */}
                             </a>
                             <span>|</span>
                             <span className="text">花了么:中国鲜花领先品牌</span>

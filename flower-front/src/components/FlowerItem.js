@@ -8,7 +8,8 @@ class FlowerItem extends React.Component {
     toHuaInf() {
         // push佳轩和邓林的板块
         // console.log(this.props.flowerInf.flower_id)
-        this.props.history.push({pathname:"/Recommend/:flowerID",query:this.props.flowerInf.flower_id})
+        window.scrollTo(0, 0)
+        this.props.history.push({pathname:"/FlowerDetail/:flowerID",query:this.props.flowerInf.flower_id})
     }
     render() {
         return (

@@ -10,6 +10,7 @@ import Personinf from "./components/person/PersonInf";
 import ShowRemind from "./components/person/ShowRemind";
 import AddRemind from "./components/person/AddRemind";
 import Flower from "./view/Flower";
+import buycar from "./view/buycar/buycar"
 
 const myHistory = createHashHistory();
 function App() {
@@ -26,6 +27,7 @@ function App() {
                 {/* <Route exact={true} path="/:kindName" component={KindPage} /> */}
 
                 <Route exact={true} path="/FlowerDetail/:flowerID" component={Flower} />
+                <Route exact={true} path='/buycar' component={buycar}/>
 
                 <Route exact={true} path="/personinf" component={Personinf} />
                 <Route exact={true} path="/showRemind" component={ShowRemind} />
