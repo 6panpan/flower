@@ -14,6 +14,8 @@ export default class Member extends React.Component {
             evaluate: 0,//待评价
             overage: 0,//余额
             integral: 0,//积分f v
+            userinf:{}
+            
         }
     }
     getCookie(key) {
@@ -50,10 +52,11 @@ export default class Member extends React.Component {
         // 根据当前user_id查找用户积分
         console.log(user_id);
         axios.post("http://127.0.0.1:7001/getIntegral",{
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
             u_id: user_id
         }).then(res=>{
             console.log('post请求成功')
-            console.log(res.data);
+            console.log(res);
         }).catch(err=>{
             console.log(err);
         })
@@ -66,8 +69,10 @@ export default class Member extends React.Component {
                 user_id: user_id
             }
         }).then(res => {
-            this.state.userinf = res.data[0]
-            console.log(this.state.userinf);
+            this.setState({
+                userinf:res.data[0]
+            })
+            console.log(this.state.userinf.headimg)
         })
     }
     render() {
@@ -78,8 +83,9 @@ export default class Member extends React.Component {
                 </span>
                 <div className='own'>
                     <div className="own-left">
-                        <div className='avatar' onClick={this.state.upAvator}>
-                            <UserOutlined className='avator-icon icon' />
+                        <div className='avatar'>
+                            {/* <UserOutlined className='avator-icon icon' /> */}
+                            <img className='avatar' src={this.state.userinf.headimg}></img>
                         </div>
                         <div className='namer'>
                             <span>
