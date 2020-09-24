@@ -16,17 +16,13 @@ export default class Buycar extends React.Component {
     }
   }
   componentDidMount() {
-    console.log(this.state.orderlist);
     let that = this
     let list = this.state.orderlist
-    console.log(list);
-    // 获取cookie
-    // let jsonStr = this.getCookie("order");
-    // let orderNewObj = JSON.parse(jsonStr);
-    // console.log(orderNewObj);
+    console.log(list)
     // let
     let tbody = document.getElementById('mybuycar')
     for (let i = 0; i < list.length; i++) {
+      
       let tr = document.createElement('tr')
       // 勾选框
       let check = document.createElement('input')
@@ -59,6 +55,7 @@ export default class Buycar extends React.Component {
         for (let i = 0; i < single.length; i++) {
           single[i].checked = checkall.checked
         }
+        that.total()
       })
 
      }
@@ -84,8 +81,9 @@ export default class Buycar extends React.Component {
         list[index].total = (list[index].num * list[index].price).toFixed(2)
 
       } else if (e.target.className.match('add-num')) {
-        // console.log("add")
-        list[index].num+=1
+
+        let newNum = parseInt(list[index].num);
+        list[index].num=newNum+1
         e.target.previousElementSibling.innerHTML = list[index].num
 
         if (list[index].num > 1) {
@@ -172,10 +170,10 @@ export default class Buycar extends React.Component {
     
   }
   // 提交订单
-  Submit() {
-    alert("购买成功");
-    // this.setCookie('order',"")
-  }
+  // Submit() {
+  //   alert("购买成功");
+  //   // this.setCookie('order',"")
+  // }
 
   render() {
     return (
@@ -200,9 +198,9 @@ export default class Buycar extends React.Component {
         <h4 style={{ width: '70%', margin: '0 auto', textAlign: 'right' }}>
           总价：<span className="total"></span>
         </h4>
-        <h4 className="buy-car-footer" onClick={this.Submit} style={{ width: '70%', margin: '0 auto', textAlign: 'right' }}>
+        {/* <h4 className="buy-car-footer" onClick={this.Submit} style={{ width: '70%', margin: '0 auto', textAlign: 'right' }}>
           提交订单
-        </h4>
+        </h4> */}
       </div>
     )
   }

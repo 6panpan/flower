@@ -55,15 +55,10 @@ export default class Nav extends React.Component {
         
     }
     toBuycar() {
-        // console.log(this.getCookie("nickname"));
-        this.props.history.push({ pathname: "/buycar" });
-    }
-    getCookie(name){
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");     
-        if(arr=document.cookie.match(reg)){
-          return (arr[2]);
-        }else{
-          return null;
+        if(this.getCookie("nickname")) {
+            this.props.history.push({ pathname: "/buycar" });
+        } else {
+            this.props.history.push({ pathname: "/login" });
         }
     }
     render() {
