@@ -9,10 +9,12 @@ a {
     padding-left: 32px;
     display: flex;
     height: 35px;
+    width: 100%;
     background-color: #F2F2F2;
     border-bottom: 1px solid #e6e6e6;
     box-sizing: border-box;
     justify-content: space-between;
+    position: fixed;
 }
 .nav-top a {
     color: #737373;

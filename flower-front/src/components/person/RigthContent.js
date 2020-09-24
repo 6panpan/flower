@@ -19,7 +19,7 @@ export default class Right extends React.Component {
         console.log(nextProps);
     }
     getul() {
-        console.log(this.props.page);
+        // console.log(this.props.page);
         switch(this.props.page){
             case '0': return <Member/>;
             case '1': return <Order/>;
@@ -31,7 +31,7 @@ export default class Right extends React.Component {
         }  
     }
     render() {
-        console.log(this.props.page);
+        // console.log(this.props.page);
         return (
             <>
                 <div className='rigth-content'>

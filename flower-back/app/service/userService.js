@@ -11,7 +11,7 @@ class UserService extends Service {
         let list = await this.ctx.app.mysql.query(sql, [nickname, phoneNum, pwd]);
         return list
     }
-
+    
     //登录
     async login(phoneNum, pwd) {
         let sql = "select * from user where phoneNum=? and pwd=?";
