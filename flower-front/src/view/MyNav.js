@@ -21,10 +21,10 @@ class App extends React.Component {
         if (e.target.innerHTML) {
             path = "/flower/" + e.target.innerHTML;
         }
-        if (path) { 
+        if (path) {
             this.props.history.push({ pathname: path, query: e.target.innerHTML });
         }
-        if(this.props.father){
+        if (this.props.father) {
             this.props.father.getAxios(e.target.innerHTML)
         }
     }

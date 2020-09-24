@@ -13,13 +13,12 @@ class App extends React.Component {
         }
         // console.log(path);
 
-        if(this.props.father){
-            this.props.father.getAxios(e)
-        }
-
         if (path) {
-            console.log(this.props.history);
+            // console.log(this.props.history);
             this.props.history.push({ pathname: path, query: e });
+            if(this.props.father){
+                this.props.father.getAxios(e)
+            }
         }
     }
     render() {
