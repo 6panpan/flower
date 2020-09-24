@@ -1,20 +1,20 @@
-import React from 'react';
-import axios from 'axios';
-import MySearch from "../view/MySearch"
-import MyNav from "../view/MyNav"
+import React from "react";
+import axios from "axios";
+import MySearch from "../view/MySearch";
+import MyNav from "../view/MyNav";
 import SortAll from "../components/sortAll";
-import FlowerItem from "./FlowerItem"
+import FlowerItem from "./FlowerItem";
 
 class KingdPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            list: []
-        }
+            list: [],
+        };
     }
     componentWillMount() {
         // console.log(this.props.location.query)
-        this.getAxios()
+        this.getAxios();
         // axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
         //     params: {
         //         purpose: this.props.location.query
@@ -28,42 +28,48 @@ class KingdPage extends React.Component {
         //     console.log("err")
         // })
     }
-    getAxios(){
-        console.log("------------------")
-        axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
-            params: {
-                purpose: this.props.location.query
-            }
-        }).then(res => {
-            this.setState({
-                list: res.data
+    getAxios() {
+        axios
+            .get("http://127.0.0.1:7001/allFlower.do", {
+                params: {
+                    flower_name: this.props.location.query,
+                    purpose: this.props.location.query,
+                    kind: this.props.location.query,
+                    num: this.props.location.query,
+                },
             })
-            return
-        }).catch(err => {
-            console.log("err")
-        })
+            .then(res => {
+                this.setState({
+                    list: res.data,
+                });
+                console.log("/allFlower");
+                return;
+            })
+            .catch(err => {
+                console.log("err");
+            });
     }
     showFlower() {
-        console.log(this.state.list)
         let list = this.state.list.map(el => {
-            return <FlowerItem history={this.props.history} key={el.flower_id} flowerInf={el} />
-        })
-        return list
-    } 
+            return <FlowerItem history={this.props.history} key={el.flower_id} flowerInf={el} />;
+        });
+        console.log(this.state.list);
+        return list;
+    }
     render() {
         return (
             <div>
-                <MySearch father={this} history={this.props.history}/>
+                <MySearch father={this} history={this.props.history} />
                 <MyNav father={this} history={this.props.history} />
 
                 <p>首页&gt;{this.props.location.query}</p>
-                <SortAll />
+                <SortAll father={this} history={this.props.history} />
 
-                <div style={{display:"flex",justifyContent: "left",flexWrap:"wrap"}}>
+                <div style={{ display: "flex", justifyContent: "left", flexWrap: "wrap" }}>
                     {this.showFlower()}
                 </div>
             </div>
-        )
+        );
     }
 }
 
