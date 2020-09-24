@@ -1,12 +1,14 @@
 import React from 'react';
 import { FileDoneOutlined, RedEnvelopeOutlined, UserOutlined } from '@ant-design/icons';
+import axios from "axios";
+// import qs from 'qs';
+
 
 
 export default class Member extends React.Component {
     constructor() {
         super()
         this.state = {
-            username: 'liuxing',
             member: '普通会员',
             paying: 0,//待支付
             evaluate: 0,//待评价
@@ -14,8 +16,59 @@ export default class Member extends React.Component {
             integral: 0,//积分f v
         }
     }
-    upAvator() {
+    getCookie(key) {
+        let name = key + "=";
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i].trim();
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return null;
+    }
+    // componentWillMount(){
+    //     this.getname()
 
+    // }
+    componentDidMount() {
+        this.getname()
+        console.log('111')
+        this.getIntegral()
+        this.getUserinf()
+    }
+    getname(){
+        let username=this.getCookie("nickname")
+        this.setState({
+            nickname: username
+        })
+        // this.state.nickname = nickname;
+    }
+    getIntegral(){
+        console.log(222);
+        let user_id = this.getCookie('user_id')
+        // 根据当前user_id查找用户积分
+        console.log(user_id);
+        axios.post("http://127.0.0.1:7001/getIntegral",{
+            u_id: user_id
+        }).then(res=>{
+            console.log('post请求成功')
+            console.log(res.data);
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+    getUserinf() {
+        let user_id = this.getCookie("user_id")
+        console.log(user_id);
+        axios.get("http://127.0.0.1:7001/getUserinf", {
+            params: {
+                user_id: user_id
+            }
+        }).then(res => {
+            this.state.userinf = res.data[0]
+            console.log(this.state.userinf);
+        })
     }
     render() {
         return (
@@ -30,7 +83,7 @@ export default class Member extends React.Component {
                         </div>
                         <div className='namer'>
                             <span>
-                                {this.state.username}
+                                {this.state.nickname}
                             </span>
                             <span>
                                 {this.state.member}
