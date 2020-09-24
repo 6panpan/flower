@@ -28,10 +28,9 @@ export default class Member extends React.Component {
         this.getname()
     }
     getname(){
-        let nickname=this.getCookie("nickname")
-        console.log(nickname);
-        this.setState=({
-            nickname:nickname
+        let username=this.getCookie("nickname")
+        this.setState({
+            nickname:username
         })
     }
     render() {

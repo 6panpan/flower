@@ -22,7 +22,7 @@ export default class Login extends Component {
     }
     //监听登录中的电话和密码
     phonechange(e) {
-        this.setState({
+         this.setState({
             phoneNum: e.target.value
         })
     }
@@ -60,7 +60,7 @@ export default class Login extends Component {
             //存入cookie
             document.cookie = "user_id=" + user.user_id;
             document.cookie = "phoneNum=" + user.phoneNum;
-            document.cookie = "pwd=" + user.pwd;
+            // document.cookie = "pwd=" + user.pwd;
             document.cookie = "nickname=" + user.nickname;
             //跳到主页面
             this.props.history.push("/")
@@ -70,7 +70,7 @@ export default class Login extends Component {
         })
     }
     onlyphone() {
-        if (this.state.pwd === this.state.surepwd && this.state.pwd !== undefined && this.state.nickname !== undefined && this.state.phoneNum !== undefined) {
+        if (this.state.pwd === this.state.surepwd && this.state.pwd !== undefined && this.state.nickname !== undefined && this.state.phoneNum.length === 11  && !isNaN(this.state.phoneNum) ) {
             axios.post("http://127.0.0.1:7001/onlyphone", {
                 phoneNum: this.state.phoneNum,
             }).then(res => {
@@ -120,7 +120,7 @@ export default class Login extends Component {
                             <Tabs defaultActiveKey="1" onChange={this.callback.bind(this)}>
                                 <TabPane tab="登录" key="1">
                                     <div className="login">
-                                        <p>手机号码：<Input onChange={(e) => this.phonechange(e)} placeholder="请输入手机号" style={{ width: "180px", margin: "10px" }} /></p>
+                                        <p>手机号码：<Input id="phone2" onChange={(e) => this.phonechange(e)} placeholder="请输入11位手机号" style={{ width: "180px", margin: "10px" }} /></p>
                                         <p>密　　码：<Input onChange={(e) => this.pwdchange(e)} type="password" placeholder="请输入密码" style={{ width: "180px", margin: "10px" }} /></p>
                                     </div>
                                     <Button onClick={this.login.bind(this)} style={{ float: "right", margin: "30px 20px" }} type="primary">确认登录</Button>
@@ -128,7 +128,7 @@ export default class Login extends Component {
                                 <TabPane tab="注册" key="2">
                                     <div className="regist">
                                         <p>昵　　称：<Input onChange={(e) => this.nicknamechange(e)} ref="nickname" placeholder="请输入昵称" style={{ width: "180px", margin: "5px" }} /></p>
-                                        <p>手机号码：<Input onChange={(e) => this.phonechange(e)} ref="phoneNum" placeholder="请输入手机号" style={{ width: "180px", margin: "5px" }} /></p>
+                                        <p>手机号码：<Input id="phone" onChange={(e) => this.phonechange(e)} ref="phoneNum" placeholder="请输入11位手机号" style={{ width: "180px", margin: "5px" }} /></p>
                                         <p>密　　码：<Input onChange={(e) => this.pwdchange(e)} ref="pwd" type="password" placeholder="请输入密码" style={{ width: "180px", margin: "5px" }} /></p>
                                         <p>确认密码：<Input onChange={(e) => this.surepwdchange(e)} type="password" placeholder="请确认密码" style={{ width: "180px", margin: "5px" }} /></p>
                                     </div>

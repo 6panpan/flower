@@ -6,6 +6,8 @@ import Integral from './content/Integral';
 import Evaluation from './content/Evaluation';
 import Information from './content/Information';
 import Birth from './content/Birthremind';
+import Service from './content/Service';
+import Complaint from './content/Complaint';
 
 export default class Right extends React.Component {
     constructor (props) {
@@ -27,6 +29,8 @@ export default class Right extends React.Component {
             case '4': return <Integral/>;
             case '6': return <Information/>;
             case '9': return <Birth/>;
+            case '15': return <Service/>;
+            case '16':return <Complaint/>
             default: return <Member/>
         }  
     }
