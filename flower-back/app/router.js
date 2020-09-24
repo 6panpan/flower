@@ -16,13 +16,21 @@ module.exports = app => {
     //根据用户id修改用户信息
     router.post("/infchange", controller.userController.infchange);
 
-    //纪念日
-    //添加纪念日
-    router.post("/addRemind", controller.remindController.addRemind);
-    //根据用户id获取纪念日
-    router.post("/getRemind", controller.remindController.getRemind);
-    //根据纪念日id删除纪念日
-    router.post("/delRemind", controller.remindController.delRemind);
+  // 会员信息 
+  // 积分
+  //在数据库member表中根据user_id创建用户积分，默认为0
+  router.post('/setIntegral',controller.memberController.setIntegral)
+  //根据id查找用户积分
+  router.post('/getIntegral',controller.memberController.getIntegral)
+  router.post('/getAvatar',controller.memberController.getAvatar)
+  
+  //纪念日
+  //添加纪念日
+  router.post('/addRemind', controller.remindController.addRemind)
+  //根据用户id获取纪念日
+  router.post('/getRemind', controller.remindController.getRemind)
+  //根据纪念日id删除纪念日
+  router.post('/delRemind', controller.remindController.delRemind)
 
     //花
     router.get("/flowerByPurpose.do", controller.flowerController.flowerByPurpose);

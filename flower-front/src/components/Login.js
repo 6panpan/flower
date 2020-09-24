@@ -86,27 +86,20 @@ export default class Login extends Component {
         } else {
             alert("请确认信息的正确性")
         }
-
-
     }
     regist() {
         axios.post("http://127.0.0.1:7001/regist", {
             nickname: this.state.nickname,
             phoneNum: this.state.phoneNum,
             pwd: this.state.pwd
-        }).then(res => {
+        }).then(res => {       
             alert("注册成功请登录")
-
             //刷新页面跳转到登录 
             this.props.history.go(0) 
         }).catch(err => {
             console.log(err);
         })
-
-
     }
-
-
 
     render() {
         return (

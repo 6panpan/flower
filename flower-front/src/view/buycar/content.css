@@ -23,7 +23,7 @@ button{
     height: 90%; */
     height: 400px;
     width: 400px;
-    background-color: aquamarine;
+    /* background-color: aquamarine; */
     border: 1px solid #ccc;
 }
 /* 右边信息 */

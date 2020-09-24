@@ -13,21 +13,25 @@ class KingdPage extends React.Component {
         };
     }
     componentWillMount() {
-        // console.log(this.props.location.query)
-        this.getAxios();
-        // axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
-        //     params: {
-        //         purpose: this.props.location.query
-        //     }
-        // }).then(res => {
-        //     this.setState({
-        //         list: res.data
-        //     })
-        //     return
-        // }).catch(err => {
-        //     console.log("err")
-        // })
+        this.getAxiosByPurpose();
     }
+
+    getAxiosByPurpose() {
+        // console.log("------------------")
+        // console.log(this.props.location.query)
+        axios.get("http://127.0.0.1:7001/flowerByPurpose.do", {
+            params: {
+                purpose: this.props.location.query
+            }
+        }).then(res => {
+            this.setState({
+                list:res.data
+            })
+        }).catch(err => {
+            console.log("err")
+        })
+    }
+
     getAxios() {
         axios
             .get("http://127.0.0.1:7001/allFlower.do", {
@@ -37,6 +41,7 @@ class KingdPage extends React.Component {
                     kind: this.props.location.query,
                     num: this.props.location.query,
                 },
+
             })
             .then(res => {
                 this.setState({
@@ -50,11 +55,14 @@ class KingdPage extends React.Component {
             });
     }
     showFlower() {
+        // console.log(this.state.list)
         let list = this.state.list.map(el => {
-            return <FlowerItem history={this.props.history} key={el.flower_id} flowerInf={el} />;
-        });
-        console.log(this.state.list);
-        return list;
+            return <FlowerItem history={this.props.history} key={el.flower_id} flowerInf={el} />
+        })
+        return list
+    }
+    toMain() {
+        this.props.history.push("/")
     }
     render() {
         return (
@@ -62,9 +70,8 @@ class KingdPage extends React.Component {
                 <MySearch father={this} history={this.props.history} />
                 <MyNav father={this} history={this.props.history} />
 
-                <p>首页&gt;{this.props.location.query}</p>
-                <SortAll father={this} history={this.props.history} />
-
+                <p><span style={{ cursor: "pointer" }} onClick={this.toMain.bind(this)}>首页</span>&gt;{this.props.location.query}</p>
+                <SortAll />
                 <div style={{ display: "flex", justifyContent: "left", flexWrap: "wrap" }}>
                     {this.showFlower()}
                 </div>

@@ -1,19 +1,21 @@
-import React from "react";
+// import React from "react";
+
+import React, { Component } from "react";
 import '../assets/css/FlowerDetails.css';
 import axios from 'axios';
 import { Tabs } from 'antd';
 // import { LoginOutlined } from '@ant-design/icons';
 
 const { TabPane } = Tabs;
-
-export default class FlowerDetails extends React.Component {
-    constructor() {
+// export default class FlowerDetails extends React.Component
+class FlowerDetails extends Component{
+    constructor(props) {
         super();
         this.state = {
             flowerList: [],
             userList: [],
             isShow: false,
-            id: 1
+            id: props.flower_id
         };
     };
     componentDidMount() {
@@ -137,3 +139,5 @@ export default class FlowerDetails extends React.Component {
     };
    
 }
+
+export default FlowerDetails
