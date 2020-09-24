@@ -60,8 +60,8 @@ export default class Login extends Component {
             //存入cookie
             document.cookie = "user_id=" + user.user_id;
             document.cookie = "phoneNum=" + user.phoneNum;
-            // document.cookie = "pwd=" + user.pwd;
             document.cookie = "nickname=" + user.nickname;
+
             //跳到主页面
             this.props.history.push("/")
         }).catch(err => {
