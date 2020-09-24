@@ -15,6 +15,7 @@ a {
     box-sizing: border-box;
     justify-content: space-between;
     position: fixed;
+    z-index: 100;
 }
 .nav-top a {
     color: #737373;

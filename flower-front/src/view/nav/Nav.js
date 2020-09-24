@@ -102,7 +102,6 @@ export default class Nav extends React.Component {
                             <div className="loginer">
                                 <div style={{ display: this.state.islogin ? 'none' : "inline-block" }}>
                                     <a href="/login">你好，请登录</a>
-                                    <a href="#">注册</a>
                                 </div>
 
                                 <a onClick={this.toPerson.bind(this)} style={{ display: this.state.islogin ? 'inline-block' : "none" }}>你好，{this.state.nickname}   </a><span style={{ display: this.state.islogin ? 'inline-block' : "none" }} className="loginout" onClick={this.loginout.bind(this)}>退出</span>

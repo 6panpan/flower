@@ -37,7 +37,7 @@ class FlowerList extends React.Component {
         let list = this.state.mainKind.map(el => {
             return <FlowerKind history={this.props.history} key={el.id} kindInf={el} />;
         });
-        return list;
+        return list; 
     }
     render() {
         return <div>{this.allKind()}</div>;
