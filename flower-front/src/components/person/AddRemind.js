@@ -4,7 +4,6 @@ import "../../assets/css/remind.css"
 import { Input } from 'antd';
 import { Button } from 'antd';
 import { Radio } from 'antd';
-import ShowRemind from "./ShowRemind";
 
 export default class AddRemind extends Component {
     constructor() {
@@ -25,10 +24,6 @@ export default class AddRemind extends Component {
         return null;
     }
     addRemind() {
-        console.log(this.state.birth);
-        console.log(this.state.name);
-        console.log(this.state.sex);
-        console.log(this.state.mark);
         let re_id = this.getCookie("user_id")
         if (this.state.birth !== undefined && this.state.name !== undefined && this.state.sex !== undefined) {
             axios.post("http://127.0.0.1:7001/addRemind", {
@@ -40,7 +35,8 @@ export default class AddRemind extends Component {
             }).then(res => {
                 console.log(res);
                 alert("添加成功")
-                return <ShowRemind></ShowRemind>
+                // this.forceUpdate();
+                window.location.reload(true)
             }).catch(err => {
                 console.log(err);
             })

@@ -10,7 +10,6 @@ class RemindController extends Controller {
         let re_sex=this.ctx.request.body.re_sex;
         let re_birth = this.ctx.request.body.re_birth;
         let re_mark = this.ctx.request.body.re_mark;
-
         let list = await this.ctx.service.remindService.addRemind(re_id,re_name,re_sex,re_birth,re_mark)
         this.ctx.response.body = list;
     }
@@ -18,7 +17,6 @@ class RemindController extends Controller {
     //根据用户id获取他所添加的纪念日
     async getRemind(){
         let re_id = this.ctx.request.body.re_id;
-
         let list = await this.ctx.service.remindService.getRemind(re_id)
         this.ctx.response.body = list;
     }

@@ -6,6 +6,8 @@ import Integral from './content/Integral';
 import Evaluation from './content/Evaluation';
 import Information from './content/Information';
 import Birth from './content/Birthremind';
+import Service from './content/Service';
+import Complaint from './content/Complaint';
 
 export default class Right extends React.Component {
     constructor (props) {
@@ -19,7 +21,7 @@ export default class Right extends React.Component {
         console.log(nextProps);
     }
     getul() {
-        console.log(this.props.page);
+        // console.log(this.props.page);
         switch(this.props.page){
             case '0': return <Member/>;
             case '1': return <Order/>;
@@ -27,11 +29,13 @@ export default class Right extends React.Component {
             case '4': return <Integral/>;
             case '6': return <Information/>;
             case '9': return <Birth/>;
+            case '15': return <Service/>;
+            case '16':return <Complaint/>
             default: return <Member/>
         }  
     }
     render() {
-        console.log(this.props.page);
+        // console.log(this.props.page);
         return (
             <>
                 <div className='rigth-content'>

@@ -1,18 +1,20 @@
 import React from 'react'
 import './content.css'
-// import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import axios from 'axios'
 // 面包屑导航
 import { Breadcrumb } from 'antd'
-export default class Content extends React.Component {
-  constructor() {
+class Content extends React.Component {
+  constructor(props) {
     super()
     this.state = {
       list: [],
+      orderList:{}
     }
+    
   }
   componentDidMount() {
-    let id = 1
+    let id = this.props.flower_id
     console.log(id)
     axios.get('http://127.0.0.1:7001/getFlowersByID', {
         params: {
@@ -41,48 +43,59 @@ export default class Content extends React.Component {
   }
   // 增加订单
  addOrder=()=>{
-    // console.log(this.state.list)
-    let num =document.getElementById("num")
-    console.log('num=',num.innerHTML)
-    console.log("floewr_id",this.state.list.floewr_id)
-    console.log("flower_name",this.state.list.flower_name)
-    console.log("price",this.state.list.price)
-    // let id=1;
-    axios.post('http://127.0.0.1:7001/addOrder', 
-    {
-      flower_id:this.state.list.floewr_id,
+
+  if(this.getCookie("nickname")) {
+    let num =document.getElementById("num");
+    let orderObj = [];
+    let order = {
+      num:num.innerHTML,
+      floewr_id:this.state.list.flower_id,
       name:this.state.list.flower_name,
       price:this.state.list.price,
-      num:num
-      })
-      .then((res) => {
-        console.log(res.data)
-      })
-      .catch((err) => {
-        console.log("err-----")
-        console.log(err)
-      })
-      // axios.get('http://127.0.0.1:7001/getOrderID', {
-    //   params:{
-    //   id:id
-    //   }
-    // }
-    // )
-    //   .then((res) => {
-    //     console.log(res.data)
-    //   })
-    //   .catch((err) => {
-    //     console.log("err-----")
-    //     console.log(err)
-    //   })
+      user_id:this.props.flower_id
+    }
+    if(this.getCookie("order")) {
+      let orderList=this.getCookie("order"); 
+      orderObj = JSON.parse(orderList);
+      // console.log(orderObj);
+      orderObj.push(order);
+      // console.log(orderObj);
+    } else {
+      orderObj.push(order);
+    }
+    // console.log(orderObj);
+    let str = JSON.stringify(orderObj);
+    this.setCookie('order', str);
+    // this.props.history.push("/buycar");
+    console.log(this.props.history.push("/buycar"));
+  } else {
+    this.props.history.push({ pathname: "/login" });
   }
+  }
+  setCookie(name, value){
+    //定义一天
+    var days = 1;
+    var exp = new Date();
+    //定义的失效时间，
+    exp.setTime(exp.getTime() + days * 24 * 60 * 60 * 1000);  
+    //写入Cookie  ，toGMTstring将时间转换成字符串。
+    document.cookie = name + "=" + `${value}` + ";expires=" + exp.toGMTString;
+}
+  getCookie(name){
+    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");     
+    if(arr=document.cookie.match(reg)){
+      return (arr[2]);
+    }else{
+      return null;
+    }
+}
   render() {
     return (
       <>
         <Breadcrumb separator=">">
           <Breadcrumb.Item>首页</Breadcrumb.Item>
           <Breadcrumb.Item>{this.state.list.kind}</Breadcrumb.Item>
-    <Breadcrumb.Item>{this.state.list.flower_name}</Breadcrumb.Item>
+          <Breadcrumb.Item>{this.state.list.flower_name}</Breadcrumb.Item>
         </Breadcrumb>
         <div className="det-header">
           <div className="det-img">
@@ -132,3 +145,4 @@ export default class Content extends React.Component {
     )
   }
 }
+export default  withRouter(Content)

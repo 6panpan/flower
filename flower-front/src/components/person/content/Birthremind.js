@@ -45,7 +45,7 @@ export default class Order extends React.Component {
                 </div>
 
                 <div className="show">
-                    <ShowRemind></ShowRemind>
+                    <ShowRemind ></ShowRemind>
                 </div>
 
                 <div className="add" style={{ display: "none" }}>

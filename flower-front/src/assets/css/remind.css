@@ -30,9 +30,11 @@
 }
 .mark{
     width: 300px !important;
-    overflow: hidden;   
-    text-overflow:ellipsis;    
-    white-space: nowrap;
+    display:block;
+    overflow:hidden;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
 }
 .s1{
     position:absolute;

@@ -1,5 +1,8 @@
 import React from 'react';
 import { FileDoneOutlined, RedEnvelopeOutlined, UserOutlined } from '@ant-design/icons';
+import axios from "axios";
+// import qs from 'qs';
+
 
 
 export default class Member extends React.Component {
@@ -11,6 +14,8 @@ export default class Member extends React.Component {
             evaluate: 0,//待评价
             overage: 0,//余额
             integral: 0,//积分f v
+            userinf:{}
+            
         }
     }
     getCookie(key) {
@@ -24,14 +29,50 @@ export default class Member extends React.Component {
         }
         return null;
     }
+    // componentWillMount(){
+    //     this.getname()
+
+    // }
     componentDidMount() {
         this.getname()
+        console.log('111')
+        this.getIntegral()
+        this.getUserinf()
     }
     getname(){
-        let nickname=this.getCookie("nickname")
-        console.log(nickname);
-        this.setState=({
-            nickname:nickname
+        let username=this.getCookie("nickname")
+        this.setState({
+            nickname: username
+        })
+        // this.state.nickname = nickname;
+    }
+    getIntegral(){
+        console.log(222);
+        let user_id = this.getCookie('user_id')
+        // 根据当前user_id查找用户积分
+        console.log(user_id);
+        axios.post("http://127.0.0.1:7001/getIntegral",{
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+            u_id: user_id
+        }).then(res=>{
+            console.log('post请求成功')
+            console.log(res);
+        }).catch(err=>{
+            console.log(err);
+        })
+    }
+    getUserinf() {
+        let user_id = this.getCookie("user_id")
+        console.log(user_id);
+        axios.get("http://127.0.0.1:7001/getUserinf", {
+            params: {
+                user_id: user_id
+            }
+        }).then(res => {
+            this.setState({
+                userinf:res.data[0]
+            })
+            console.log(this.state.userinf.headimg)
         })
     }
     render() {
@@ -42,8 +83,9 @@ export default class Member extends React.Component {
                 </span>
                 <div className='own'>
                     <div className="own-left">
-                        <div className='avatar' onClick={this.state.upAvator}>
-                            <UserOutlined className='avator-icon icon' />
+                        <div className='avatar'>
+                            {/* <UserOutlined className='avator-icon icon' /> */}
+                            <img className='avatar' src={this.state.userinf.headimg}></img>
                         </div>
                         <div className='namer'>
                             <span>

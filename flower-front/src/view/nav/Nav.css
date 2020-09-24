@@ -8,11 +8,15 @@ a {
 .nav-top {
     padding-left: 32px;
     display: flex;
+    left: 0;
     height: 35px;
+    width: 100%;
     background-color: #F2F2F2;
     border-bottom: 1px solid #e6e6e6;
     box-sizing: border-box;
     justify-content: space-between;
+    position: fixed;
+    z-index: 100;
 }
 .nav-top a {
     color: #737373;

@@ -28,11 +28,6 @@ export default class Personinf extends Component {
         }
         return null;
     }
-    phonechange(e) {
-        this.setState({
-            phoneNum: e.target.value
-        })
-    }
     pwdchange(e) {
         this.setState({
             pwd: e.target.value
@@ -41,33 +36,38 @@ export default class Personinf extends Component {
     nicknamechange(e) {
         this.setState({
             nickname: e.target.value
-        })
+        }) 
     }
     sexchange(e) {
         this.setState({
             sex: e.target.value
         })
     }
+    //一个bug
+    //只能最后修改头像
     imgchange(e) {
-        console.log(e.target.files[0]);
-        this.state.userinf.headimg = e.target.files[0]
+        this.setState({
+            headimg: e.target.files[0]
+        })
+        // this.state.userinf.headimg = e.target.files[0]
     }
     getUserinf() {
         let user_id = this.getCookie("user_id")
-        console.log(user_id);
         axios.get("http://127.0.0.1:7001/getUserinf", {
             params: {
                 user_id: user_id
             }
         }).then(res => {
-            this.state.userinf = res.data[0]
-            console.log(this.state.userinf);
+            this.setState({
+                userinf :res.data[0]
+            })
         })
     }
+    getsex(){
+        return this.getCookie("sex")
+    }
     infchange() {
-        // if (this.state.img === undefined) {
-        //     this.state.img = this.state.userinf.headimg
-        // }
+        //未输入的时候判断赋值  否则会传入空值
         if (this.state.phoneNum === undefined) {
             this.state.phoneNum = this.state.userinf.phoneNum
         }
@@ -85,12 +85,16 @@ export default class Personinf extends Component {
 
 
         let formData = new FormData();
+        document.cookie = "nickname=" + this.state.nickname;
+        document.cookie = "sex=" + this.state.sex;
+
 
         formData.append("user_id", user_id);
         formData.append("nickname", this.state.nickname);
         formData.append("pwd", this.state.pwd);
         formData.append("phoneNum", this.state.phoneNum);
         formData.append("sex", this.state.sex);
+        
 
         let file = document.getElementById("choose").files[0];
         const config = {
@@ -104,21 +108,14 @@ export default class Personinf extends Component {
         }
 
         axios.post("http://127.0.0.1:7001/infchange", formData, config, {
-            // user_id: user_id,
-            // phoneNum: this.state.phoneNum,
-            // nickname: this.state.nickname,
-            // sex: this.state.sex,
-            // pwd: this.state.pwd,
-        }).then(res => {
-            if (res.data===1) {
-                alert("保存成功");
-            }else{
-                alert("保存成功")
-                this.state.userinf.headimg=res.data
-            }
-            
-            // this.state.userinf.headimg=res.data
 
+        }).then(res => {
+                alert("保存成功");
+                this.getUserinf()
+                this.state.userinf.headimg=res.data
+                window.location.reload(true)
+        }).catch(err=>{
+            alert("保存失败")
         })
     }
     render() {
@@ -129,7 +126,9 @@ export default class Personinf extends Component {
                         <div className="imgbox">
                             <div className="img">
                                 <label>
-                                    <img src={this.state.userinf.headimg}></img>
+                                    <img  src={this.state.userinf.headimg}></img>
+                                    {/* <img  src={this.state.headimg}></img> */}
+
                                     <br></br>
                                     <span>修改头像</span>
                                     {/* <input className="myinp" onChange={(e) => this.imgchange(e)} type="file"></input> */}
@@ -140,10 +139,10 @@ export default class Personinf extends Component {
                         <div className="infbox">
                             <div className="myinf">
                                 <p>昵　　称<Input onChange={(e) => this.nicknamechange(e)} ref="nickname" placeholder={this.state.userinf.nickname} style={{ width: "220px", margin: "5px" }} /></p>
-                                <p>手机号码<Input onChange={(e) => this.phonechange(e)} placeholder={this.state.userinf.phoneNum} style={{ width: "220px", margin: "10px" }} /></p>
+                                <p>手机号码<Input readOnly="readOnly"  placeholder={this.state.userinf.phoneNum} style={{ width: "220px", margin: "10px" }} />(不能修改)</p>
                                 <div className="sex">
-                                    性　　别
-                                <Radio.Group style={{ marginLeft: "70px" }} onChange={(e) => this.sexchange(e)} defaultValue={this.state.sex}>
+                                    性　　别 
+                                <Radio.Group style={{ marginLeft: "70px" }} onChange={(e) => this.sexchange(e)} defaultValue={this.getsex()}>
                                         <Radio.Button value="男">男</Radio.Button>
                                         <Radio.Button value="女">女</Radio.Button>
                                     </Radio.Group>
