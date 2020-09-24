@@ -1,10 +1,10 @@
 import React from "react";
 import "./Nav.css";
 import erweima from "../../image/erweima.png";
-import axios from "axios";
+import {withRouter} from "react-router-dom"
 
 
-export default class Nav extends React.Component {
+class Nav extends React.Component {
     constructor() {
         super();
         this.state = {
@@ -16,7 +16,12 @@ export default class Nav extends React.Component {
     }
 
     toPerson() {
-        this.props.history.push({ pathname: "/Person" });
+        //解决第二次点击报错
+        if (this.props.location.pathname==="/Person") {
+            window.location.reload(true)
+        }else{
+            this.props.history.push({ pathname: "/Person" });
+        }  
     }
     getCookie(key) {
         let name = key + "="; //"pwd="
@@ -49,21 +54,16 @@ export default class Nav extends React.Component {
         document.cookie = "nickname=" + "";
         
         
-        // this.props.history.push({ pathname: "/" });
+        this.props.history.push({ pathname: "/" });
         alert("退出登录成功")
         window.location.reload(true)
         
     }
     toBuycar() {
-        // console.log(this.getCookie("nickname"));
-        this.props.history.push({ pathname: "/buycar" });
-    }
-    getCookie(name){
-        var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");     
-        if(arr=document.cookie.match(reg)){
-          return (arr[2]);
-        }else{
-          return null;
+        if(this.getCookie("nickname")) {
+            this.props.history.push({ pathname: "/buycar" });
+        } else {
+            this.props.history.push({ pathname: "/login" });
         }
     }
     render() {
@@ -145,3 +145,5 @@ export default class Nav extends React.Component {
         );
     }
 }
+
+export default withRouter(Nav)

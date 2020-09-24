@@ -43,7 +43,8 @@ class Content extends React.Component {
   }
   // 增加订单
  addOrder=()=>{
-  //  this.setCookie('order',"")
+
+  if(this.getCookie("nickname")) {
     let num =document.getElementById("num");
     let orderObj = [];
     let order = {
@@ -62,42 +63,14 @@ class Content extends React.Component {
     } else {
       orderObj.push(order);
     }
-    console.log(orderObj);
+    // console.log(orderObj);
     let str = JSON.stringify(orderObj);
     this.setCookie('order', str);
     // this.props.history.push("/buycar");
     console.log(this.props.history.push("/buycar"));
-    // console.log(history);
-
-    // let id=1;
-    // axios.post('http://127.0.0.1:7001/addOrder', 
-    // {
-    //   flower_id:this.state.list.floewr_id,
-    //   name:this.state.list.flower_name,
-    //   price:this.state.list.price,
-    //   num:num
-    //   })
-    //   .then((res) => {
-    //     console.log(res.data)
-    //   })
-    //   .catch((err) => {
-    //     console.log("err-----")
-    //     console.log(err)
-    //   })
-
-      // axios.get('http://127.0.0.1:7001/getOrderID', {
-    //   params:{
-    //   id:id
-    //   }
-    // }
-    // )
-    //   .then((res) => {
-    //     console.log(res.data)
-    //   })
-    //   .catch((err) => {
-    //     console.log("err-----")
-    //     console.log(err)
-    //   })
+  } else {
+    this.props.history.push({ pathname: "/login" });
+  }
   }
   setCookie(name, value){
     //定义一天

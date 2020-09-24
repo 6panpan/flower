@@ -8,6 +8,7 @@ a {
 .nav-top {
     padding-left: 32px;
     display: flex;
+    left: 0;
     height: 35px;
     width: 100%;
     background-color: #F2F2F2;
