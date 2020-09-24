@@ -1,21 +1,58 @@
-import React from 'react';
-import './Nav.css';
-import erweima from '../../image/erweima.png'
-import { Link } from 'react-router-dom'
+import React from "react";
+import "./Nav.css";
+import erweima from "../../image/erweima.png";
+import axios from "axios";
+
+
 export default class Nav extends React.Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            islogin: true,
-            username: 'liuxing'
+            islogin: false,
         }
+    }
+    componentWillMount() {
+        this.isLogin()
+    }
+
+    toPerson() {
+        this.props.history.push({ pathname: "/Person" });
+    }
+    getCookie(key) {
+        let name = key + "="; //"pwd="
+        let ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            // "pwd=abc"   "price=12.4"  "name=小王"
+            let c = ca[i].trim();
+            if (c.indexOf(name) == 0) {
+                //"pwd=abc"	   //4       ,  7
+                return c.substring(name.length, c.length);
+            }
+        }
+        return null;
     }
     // 判断是否登录 cookie
     isLogin() {
-
+        let nickname = this.getCookie("nickname")
+        console.log(nickname);
+        this.setState({
+            nickname: nickname
+        })
+        if (nickname) {
+            this.state.islogin = true
+        }
     }
-    toPerson() {
-        this.props.history.push({ pathname: "/Person" });
+    loginout() {
+        //cookie
+        document.cookie = "user_id=" + "";
+        document.cookie = "phoneNum=" + "";
+        document.cookie = "nickname=" + "";
+        
+        
+        // this.props.history.push({ pathname: "/" });
+        alert("退出登录成功")
+        window.location.reload(true)
+        
     }
     toBuycar() {
         // console.log(this.getCookie("nickname"));
@@ -33,26 +70,27 @@ export default class Nav extends React.Component {
         return (
             <>
                 {/* <img src={icons}/> */}
-                <div className='nav-top'>
-                    <div className='top-left'>
+                <div className="nav-top">
+                    <div className="top-left">
                         <a>
-                            <div className='icon1'></div>
-                            <span>收藏鲜花网(hua.com)</span>
+                            <div className="icon1"></div>
+                            <span>收藏花了么</span>
                         </a>
-                        <a className='wechat'>
-                            <div className='icon2'></div>
+                        <a className="wechat">
+                            <div className="icon2"></div>
                             <span>关注微信</span>
-                            <div className='po-wechat'>
+                            <div className="po-wechat">
                                 <img src={erweima} alt="" />
                                 <div>
-                                    扫码关注<br />
-                            回复"礼物"更多惊喜！
-                        </div>
+                                    扫码关注
+                                    <br />
+                                    回复"礼物"更多惊喜！
+                                </div>
                             </div>
                         </a>
                         <a className="app" href="#">
                             <div className="icon3"></div>
-                            <span>花礼网app</span>
+                            <span>花了么app</span>
                             <div className="po-app">
                                 <img src={erweima} alt="" />
                                 <div>新人专享100元APP礼包</div>
@@ -63,17 +101,20 @@ export default class Nav extends React.Component {
                         <div className="right-child">
                             <div className="loginer">
                                 <div style={{ display: this.state.islogin ? 'none' : "inline-block" }}>
-                                    <a href="#">你好，请登录</a>
+                                    <a href="/login">你好，请登录</a>
                                     <a href="#">注册</a>
                                 </div>
 
-                                <a onClick={this.toPerson.bind(this)} style={{ display: this.state.islogin ? 'inline-block' : "none" }}>你好，{this.state.username}</a>
+                                <a onClick={this.toPerson.bind(this)} style={{ display: this.state.islogin ? 'inline-block' : "none" }}>你好，{this.state.nickname}   </a><span style={{ display: this.state.islogin ? 'inline-block' : "none" }} className="loginout" onClick={this.loginout.bind(this)}>退出</span>
+
                             </div>
 
                             <span>|</span>
                             <a href="#">订单查询</a>
                             <span>|</span>
-                            <a className="myflow" href="#">我的花礼</a>
+                            <a className="myflow" href="#">
+                                我的花花
+                            </a>
                             <span>|</span>
                             <div className="service">
                                 <a href="#">
@@ -88,20 +129,20 @@ export default class Nav extends React.Component {
                                 </div>
                             </div>
                             <span>|</span>
-                            <a onClick={this.toBuycar.bind(this)} className="shopcar" href="#">
+                            <a onClick={this.toBuycar.bind(this)}  className="shopcar" href="#">
                                 <div className="icon4"></div>
-                        购物车
-                        {/* <span className="data">(0)</span> */}
-                                {/* <div className="hid-shopcar">
+                                购物车
+                                {/* <span className="data">(0)</span>
+                                <div className="hid-shopcar">
                                     您的购物车中没有商品，先去选购吧！
-                        </div> */}
+                                </div> */}
                             </a>
                             <span>|</span>
-                            <span className="text">中国鲜花礼品网:中国鲜花网领先品牌</span>
+                            <span className="text">花了么:中国鲜花领先品牌</span>
                         </div>
                     </div>
                 </div>
             </>
-        )
+        );
     }
 }

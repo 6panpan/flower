@@ -1,0 +1,28 @@
+.contanier{
+    width: 100%;
+    height: 474px;
+    background-image: url(//img02.hua.com/pc/assets/img/login_bg.jpg);
+    background-size: cover;
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    
+}
+.loginbox{
+    width: 320px;
+    height: 370px;
+    background-color: rgba(255,255,255,0.9);
+    float: right;
+    margin-right: 80px;
+    margin-top: 50px;
+    border-radius: 10px;
+}
+.box{
+    margin: 10px 20px;
+}
+.login{
+    margin-top: 40px;
+    float: left;
+}
+.regist p{
+    float: left;
+}

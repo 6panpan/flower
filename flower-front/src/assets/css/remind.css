@@ -1,0 +1,60 @@
+.addbox{
+    width: 500px;
+    height: 400px;
+    /* background-color: sandybrown; */
+    margin:20px 20px;
+}
+.showbox{
+    width: 1200px;
+    height: 550px;
+    /* background-color: skyblue; */
+    overflow-y:auto; 
+    overflow-x:auto; 
+    margin-left: 30px;
+}
+.mytb{
+    background-color: rgb(238, 238, 238) !important;
+}
+.mytb th{
+    width: 150px;
+}
+.t1 td{
+    width: 150px;
+    height: 60px;
+}
+.t1{
+    position:relative;
+    font-size:14px ;
+    border-bottom: 1px solid black;
+    line-height: 60px;
+}
+.mark{
+    width: 300px !important;
+    display:block;
+    overflow:hidden;
+    word-break:keep-all;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.s1{
+    position:absolute;
+    top:40px;
+    right:80px;
+    font-size:18px　　
+}
+.s2{
+    position:absolute;
+    top:40px;
+    right:0;
+    font-size:18px
+}
+.t1:nth-child(odd){
+    background-color: rgb(233, 155, 168);
+}
+.t1:nth-child(even){
+    background-color: rgb(235, 197, 204);
+}
+.t1 span:hover{
+    cursor: pointer;
+    color: orange;
+}

@@ -1,13 +1,13 @@
 import React from 'react';
-
+import axios from 'axios';
 import { Breadcrumb } from 'antd';
 import { Menu } from 'antd';
 
-import './css/Person.css';
+import '../../assets/css/Person.css';
 import Nav from '../../view/nav/Nav.js';
 // import Lefthead from './LeftHead';
 import Rigthcontent from './RigthContent';
-
+import MySearch from '../../view/MySearch';
 
 
 export default class Person extends React.Component {
@@ -21,8 +21,7 @@ export default class Person extends React.Component {
     Jump(e){
         this.setState({
             jump_id : e.key
-        }
-            
+        }    
         )
         console.log(this.state.jump_id);
     }
@@ -31,8 +30,8 @@ export default class Person extends React.Component {
             <>
                 <div>
                     <Nav></Nav>
-                    <div className='header'>
-
+                    <div>
+                        <MySearch/>
                     </div>
                     <div>
                         <Breadcrumb separator=">">
