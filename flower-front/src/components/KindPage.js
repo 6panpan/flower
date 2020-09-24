@@ -73,7 +73,7 @@ class KingdPage extends React.Component {
                 <MyNav father={this} history={this.props.history} />
 
                 <p><span style={{ cursor: "pointer" }} onClick={this.toMain.bind(this)}>首页</span>&gt;{this.props.location.query}</p>
-                <SortAll />
+                <SortAll father={this} history={this.props.history}/>
                 <div style={{ display: "flex", justifyContent: "left", flexWrap: "wrap" }}>
                     {this.showFlower()}
                 </div>
