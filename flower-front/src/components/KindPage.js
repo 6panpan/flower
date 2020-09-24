@@ -4,6 +4,7 @@ import MySearch from "../view/MySearch";
 import MyNav from "../view/MyNav";
 import SortAll from "../components/sortAll";
 import FlowerItem from "./FlowerItem";
+import Nav from "../view/nav/Nav"
 
 class KingdPage extends React.Component {
     constructor() {
@@ -67,7 +68,8 @@ class KingdPage extends React.Component {
     render() {
         return (
             <div>
-                <MySearch father={this} history={this.props.history} />
+                <Nav/>
+                <MySearch  father={this} history={this.props.history} />
                 <MyNav father={this} history={this.props.history} />
 
                 <p><span style={{ cursor: "pointer" }} onClick={this.toMain.bind(this)}>首页</span>&gt;{this.props.location.query}</p>

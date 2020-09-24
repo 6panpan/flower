@@ -61,6 +61,7 @@ export default class Login extends Component {
             document.cookie = "user_id=" + user.user_id;
             document.cookie = "phoneNum=" + user.phoneNum;
             document.cookie = "nickname=" + user.nickname;
+            document.cookie = "sex=" + user.sex;
 
             //跳到主页面
             this.props.history.push("/")
